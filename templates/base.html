@@ -23,13 +23,13 @@
 				<a href="{{ url_for('get_recipes') }}" class="brand-logo">Bon Appetit</a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
 				<ul class="right hide-on-med-and-down">
-					<li><a href="{{ url_for('get_recipes') }}">Home</a></li>
+					<li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
                     <li><a href="#">Log In</a></li>
                     <li><a href="#">Log Out</a></li>
                     <li><a href="#">Add Recipe</a></li>
                     <li><a href="#">Browse Recipes</a></li>
-                    <li><a href="#">Recipe Ideas</a></li>
+                    <li><a href="{{ url_for('get_recipes') }}">Recipe Ideas</a></li>
                     <li><a href="#">Manage Recipes</a></li>
                     <li><a href="#">Admin Panel</a></li>
 				</ul>
@@ -39,13 +39,13 @@
         <!---- Side navbar --->
 		<ul class="sidenav" id="mobile-demo">
             <li><h4 class="center-align">Bon Appetit</h4></li>
-			<li><a href="{{ url_for('get_recipes') }}">Home</a></li>
+			<li><a href="{{ url_for('home') }}">Home</a></li>
 			<li><a href="{{ url_for('register') }}">Register</a></li>
 			<li><a href="#">Log In</a></li>
 			<li><a href="#">Log Out</a></li>
 			<li><a href="#">Add Recipe</a></li>
 			<li><a href="#">Browse Recipes</a></li>
-			<li><a href="#">Recipe Ideas</a></li>
+			<li><a href="{{ url_for('get_recipes') }}">Recipe Ideas</a></li>
 			<li><a href="#">Manage Recipes</a></li>
 			<li><a href="#">Admin Panel</a></li>
 		</ul>
