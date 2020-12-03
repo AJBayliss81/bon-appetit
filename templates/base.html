@@ -25,7 +25,7 @@
 				<ul class="right hide-on-med-and-down">
 					<li><a href="{{ url_for('home') }}">Home</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
-                    <li><a href="#">Log In</a></li>
+                    <li><a href="{{ url_for('login') }}">Log In</a></li>
                     <li><a href="#">Log Out</a></li>
                     <li><a href="#">Add Recipe</a></li>
                     <li><a href="#">Browse Recipes</a></li>
@@ -41,7 +41,7 @@
             <li><h4 class="center-align">Bon Appetit</h4></li>
 			<li><a href="{{ url_for('home') }}">Home</a></li>
 			<li><a href="{{ url_for('register') }}">Register</a></li>
-			<li><a href="#">Log In</a></li>
+			<li><a href="{{ url_for('login') }}">Log In</a></li>
 			<li><a href="#">Log Out</a></li>
 			<li><a href="#">Add Recipe</a></li>
 			<li><a href="#">Browse Recipes</a></li>
@@ -58,6 +58,7 @@
                 {% for message in messages %}
                     <div class="row flashes">
                         <h4 class="blue darken-1 center-align">{{ message }}</h4>
+                    </div>
                 {% endfor %}
             {% endif %}
         {% endwith %}
