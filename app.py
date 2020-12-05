@@ -64,9 +64,11 @@ def login():
 
         if existing_user:
             # check if the password for existing user matches db
+            # and create "session" cookie
             if check_password_hash(
                 existing_user["password"], request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
+                    session["is_admin"] = existing_user["is_admin"]
                     flash("Welcome, {}".format(request.form.get(
                         "username").capitalize()))
                     return redirect(url_for(
@@ -88,7 +90,31 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"].capitalize()
-    return render_template("profile.html", username=username)
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
+
+
+@app.route("/admin")
+def admin():
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"].capitalize()
+
+    if session["is_admin"]:
+        return render_template("admin.html", username=username)
+
+    return redirect(url_for("login"))
+
+
+@app.route("/logout")
+def logout():
+    # remove the session cookie to allow user to logout
+    flash("You have successfully been logged out")
+    session.pop("user")
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":
