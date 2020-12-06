@@ -30,7 +30,7 @@
 			            <li><a href="#">Add Recipe</a></li>
 			            <li><a href="#">Browse Recipes</a></li>
 			            <li><a href="{{ url_for('get_recipes') }}">Recipe Ideas</a></li>
-			            <li><a href="#">Manage Recipes</a></li>
+			            <li><a href="{{ url_for('manage_recipes') }}">Manage Recipes</a></li>
 			            {% if session.is_admin %}
 			                <li><a href="{{ url_for('admin') }}">Admin Panel</a></li>
                         {% endif %}
@@ -52,7 +52,7 @@
 			    <li><a href="#">Add Recipe</a></li>
 			    <li><a href="#">Browse Recipes</a></li>
 			    <li><a href="{{ url_for('get_recipes') }}">Recipe Ideas</a></li>
-			    <li><a href="#">Manage Recipes</a></li>
+			    <li><a href="{{ url_for('manage_recipes') }}">Manage Recipes</a></li>
                 {% if session.is_admin %}
 			        <li><a href="{{ url_for('admin') }}">Admin Panel</a></li>
                 {% endif %}

@@ -30,6 +30,14 @@ def get_recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
+@app.route("/manage_recipes/", methods=["GET", "POST"])
+def manage_recipes():
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"].capitalize()
+    return render_template("manage_recipes.html", username=username)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
