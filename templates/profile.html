@@ -11,19 +11,19 @@
 		</div>
 	</div>
 
+    {% for recipe in recipes %}
     <ul class="collapsible popout">
         <li>
-            <div class="collapsible-header"><i class="fas fa-clipboard-list text-shadow"></i>First</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-            <div class="collapsible-header"><i class="fas fa-clipboard-list text-shadow"></i>Second</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-        </li>
-        <li>
-            <div class="collapsible-header"><i class="fas fa-clipboard-list text-shadow"></i>Third</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+            <div class="collapsible-header">
+                <i class="fas fa-clipboard-list text-shadow"></i>
+                <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
+            </div>
+            <div class="collapsible-body">
+                <strong>Cuisine: {{ recipe.cuisine.capitalize() }}</strong>
+                <p>{{ recipe.description }}</p>
+            </div>
         </li>
     </ul>
+    {% endfor %}
 
 {% endblock %}
