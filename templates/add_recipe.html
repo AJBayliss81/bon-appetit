@@ -8,8 +8,12 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-globe-americas prefix text-shadow"></i>
-                    <input id="cuisine" name="cuisine" minlength="5" maxlength="15"
-                        type="text" class="validate" required>
+                    <select id="cuisine" name="cuisine" class="validate" required>
+                        <option value="" disabled selected>Select Cuisine</option>
+                        {% for cuisine in cuisines %}
+                        <option value="{{ cuisine.cuisine }}">{{ cuisine.cuisine }}</option>
+                        {% endfor %}
+                    </select>
                     <label for="cuisine">Cuisine</label>
                 </div>
             </div>
