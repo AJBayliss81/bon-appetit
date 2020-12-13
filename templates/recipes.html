@@ -5,12 +5,8 @@
         {{ recipe.cuisine }}<br>
         {{ recipe.dish_name }}<br>
             <h2>Ingredients:</h2> 
-            {% for item in recipe.ingredients %}
-              {{ item }}<br>
-            {% endfor %}
-                <h2>Method:</h2>
-            {% for item in recipe.method %}
-                {{ loop.index }}. {{ item }}<br>
-            {% endfor %}
+            {{ recipe.ingredients }}
+            <h2>Method:</h2>
+            {{ recipe.method }}
     {% endfor %}
 {% endblock %}
