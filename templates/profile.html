@@ -15,8 +15,15 @@
     <ul class="collapsible popout">
         <li>
             <div class="collapsible-header">
-                <i class="fas fa-clipboard-list text-shadow"></i>
-                <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
+                <div class="col s9">
+                    <i class="fas fa-clipboard-list text-shadow"></i>
+                    <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
+                </div>
+                <div class="col s3 profile-buttons">
+                    <a href="" class="btn-small green accent-4">View</a>
+                    <a href="" class="btn-small red accent-2">Edit</a>
+                    <a href="" class="btn-small blue accent-2">Done</a>
+                </div>
             </div>
             <div class="collapsible-body">
                 <strong>Cuisine: {{ recipe.cuisine.capitalize() }}</strong>

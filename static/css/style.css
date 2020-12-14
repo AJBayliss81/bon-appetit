@@ -1,10 +1,16 @@
+/*----- Text -----*/
+
 .text-shadow {
 text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7)
 }
 
+/*----- Flash messages -----*/
+
 .flashes {
     line-height: 2;
 }
+
+/*----- Landing page -----*/
 
 #welcome {
 top: 0;
@@ -13,6 +19,28 @@ font-size: 5vw;
 
 .welcome-card {
 top: 15vh;
+}
+
+/*----- Navbar -----*/
+
+.brand-logo {
+    margin-left: 10px;
+}
+
+/*----- Recipe list -----*/
+
+.btn-small {
+    margin: 2px;
+}
+
+.collapsible-header .col strong {
+    margin: 5px;
+    line-height: 30px;
+}
+
+.profile-buttons {
+    margin-left: auto;
+    text-align: center;
 }
 
 /*----- Media queries -----*/
