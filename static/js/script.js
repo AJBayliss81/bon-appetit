@@ -1,6 +1,7 @@
 $(document).ready(function () {
     $(".sidenav").sidenav({edge: "right"});
     $(".collapsible").collapsible();
+    $('.modal').modal();
     $(".dropdown-trigger").dropdown();
     $(".dropdown-content>li>a").css("background-color", "red");
     $(".tooltipped").tooltip();
