@@ -20,7 +20,7 @@
                     <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
                 </div>
                 <div class="col s3 profile-buttons">
-                    <a href="" class="btn-small green accent-4">View</a>
+                    <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}" class="btn-small green accent-4">View</a>
                     <a href="{{ url_for('manage_recipes', recipe_id=recipe._id) }}" class="btn-small orange accent-2">Edit</a>
                     <a href="#delete_modal{{ recipe._id }}" class="modal-trigger btn-small red darken-2">Delete</a>
                 </div>

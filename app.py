@@ -24,10 +24,10 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/get_recipes")
-def get_recipes():
-    recipes = mongo.db.recipes.find()
-    return render_template("recipes.html", recipes=recipes)
+@app.route("/get_recipe/<recipe_id>")
+def get_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("recipes.html", recipe=recipe)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -194,6 +194,12 @@ def delete_cuisine(cuisine_id):
     mongo.db.cuisine.remove({"_id": ObjectId(cuisine_id)})
     flash("Cuisine Successfully Deleted")
     return redirect(url_for("profile", username=session["user"]))
+
+
+@app.route("/edit_cuisine/<cuisine_id>", methods=["GET", "POST"])
+def edit_cuisine(cuisine_id):
+    cuisine = mongo.db.cuisine.find_one({"_id": ObjectId(cuisine_id)})
+    return render_template("edit_cuisine.html", cuisine=cuisine)
 
 
 if __name__ == "__main__":

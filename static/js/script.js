@@ -47,3 +47,27 @@ $("#cuisinesToggle").click(function() {
 
     return false;
 });
+
+$("#ingredientsToggle").click(function() {
+    if($(this).text()=="Show Ingredients ")
+    {
+        $(this).html("Hide Ingredients <i class='fas fa-minus-square'></i>");
+    } else {
+        $(this).html("Show Ingredients <i class='fas fa-plus-square'></i>");
+    }
+    $("#ingredients").toggle("slow"); 
+
+    return false;
+});
+
+$("#methodToggle").click(function() {
+    if($(this).text()=="Show Method ")
+    {
+        $(this).html("Hide Method <i class='fas fa-minus-square'></i>");
+    } else {
+        $(this).html("Show Method <i class='fas fa-plus-square'></i>");
+    }
+    $("#method").toggle("slow"); 
+
+    return false;
+});
