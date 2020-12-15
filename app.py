@@ -143,6 +143,20 @@ def add_recipe():
 
 @app.route("/manage_recipes/<recipe_id>", methods=["GET", "POST"])
 def manage_recipes(recipe_id):
+    if request.method == "POST":
+        date = datetime.datetime.now()
+        update_recipe = {
+            "cuisine": request.form.get("cuisine"),
+            "dish_name": request.form.get("dish_name"),
+            "description": request.form.get("description"),
+            "ingredients": request.form.get("ingredients"),
+            "method": request.form.get("method"),
+            "submitted_by": session["user"],
+            "submission_date": date.strftime("%d %B, %Y"),
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, update_recipe)
+        flash("Recipe Successfully Updated")
+
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"].capitalize()
