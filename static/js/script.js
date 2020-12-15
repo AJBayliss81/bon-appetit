@@ -35,3 +35,15 @@ $(document).ready(function () {
         });
     }
 });
+
+$("#cuisinesToggle").click(function() {
+    if($(this).text()=="Show Cuisines ")
+    {
+        $(this).html("Hide Cuisines <i class='fas fa-minus-square'></i>");
+    } else {
+        $(this).html("Show Cuisines <i class='fas fa-plus-square'></i>");
+    }
+    $("#cuisines").toggle("slow"); 
+
+    return false;
+});

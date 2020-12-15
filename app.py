@@ -106,8 +106,10 @@ def admin():
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"].capitalize()
 
+    cuisines = list(mongo.db.cuisine.find().sort("cuisine", 1))
+
     if session["is_admin"]:
-        return render_template("admin.html", username=username)
+        return render_template("admin.html", username=username, cuisines=cuisines)
 
     return redirect(url_for("login"))
 
@@ -141,6 +143,13 @@ def add_recipe():
     return render_template("add_recipe.html", cuisines=cuisines)
 
 
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash("Recipe Successfully Deleted")
+    return redirect(url_for("profile", username=session["user"]))
+
+
 @app.route("/manage_recipes/<recipe_id>", methods=["GET", "POST"])
 def manage_recipes(recipe_id):
     if request.method == "POST":
@@ -167,10 +176,23 @@ def manage_recipes(recipe_id):
         cuisines=cuisines, recipe=recipe, username=username)
 
 
-@app.route("/delete_recipe/<recipe_id>")
-def delete_recipe(recipe_id):
-    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
-    flash("Recipe Successfully Deleted")
+@app.route("/add_cuisine", methods=["GET", "POST"])
+def add_cuisine():
+    if request.method == "POST":
+        cuisine = {
+            "cuisine": request.form.get("cuisine")
+        }
+        mongo.db.cuisine.insert_one(cuisine)
+        flash("Cuisine Successfully Added")
+        return redirect(url_for("admin", username=session["user"]))
+
+    return render_template("add_cuisine.html")
+
+
+@app.route("/delete_cuisine/<cuisine_id>")
+def delete_cuisine(cuisine_id):
+    mongo.db.cuisine.remove({"_id": ObjectId(cuisine_id)})
+    flash("Cuisine Successfully Deleted")
     return redirect(url_for("profile", username=session["user"]))
 
 

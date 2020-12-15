@@ -43,6 +43,10 @@ top: 15vh;
     text-align: center;
 }
 
+.card .cuisine-title {
+    font-size: 3vw;
+}
+
 /*----- Media queries -----*/
 
 @media (max-width: 350px) {
