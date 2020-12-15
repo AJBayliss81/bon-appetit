@@ -30,14 +30,6 @@ def get_recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
-@app.route("/manage_recipes/", methods=["GET", "POST"])
-def manage_recipes():
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"].capitalize()
-    return render_template("manage_recipes.html", username=username)
-
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -147,6 +139,18 @@ def add_recipe():
 
     cuisines = mongo.db.cuisine.find().sort("cuisine", 1)
     return render_template("add_recipe.html", cuisines=cuisines)
+
+
+@app.route("/manage_recipes/<recipe_id>", methods=["GET", "POST"])
+def manage_recipes(recipe_id):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"].capitalize()
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    cuisines = mongo.db.cuisine.find().sort("cuisine", 1)
+    return render_template("manage_recipes.html",
+        cuisines=cuisines, recipe=recipe, username=username)
 
 
 if __name__ == "__main__":

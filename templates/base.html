@@ -26,17 +26,16 @@
 				<ul class="right hide-on-med-and-down">
 			        <li><a href="{{ url_for('home') }}">Home</a></li>
                     {% if session.user %}
-                        <ul id="dropdown1" class="dropdown-content">
+                        <ul id="dropdown" class="dropdown-content">
                         <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
 			            <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
 			            <li><a href="#">Browse Recipes</a></li>
 			            <li><a href="{{ url_for('get_recipes') }}">Recipe Ideas</a></li>
-			            <li><a href="{{ url_for('manage_recipes') }}">Manage Recipes</a></li>
 			            {% if session.is_admin %}
 			                <li><a href="{{ url_for('admin') }}">Admin Panel</a></li>
                         {% endif %}
                         </ul>
-                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+                        <li><a class="dropdown-trigger" href="#!" data-target="dropdown">Resources<i class="material-icons right">arrow_drop_down</i></a></li>
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                     {% else %}
 			            <li><a href="{{ url_for('register') }}">Register</a></li>
@@ -55,7 +54,6 @@
 			    <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
 			    <li><a href="#">Browse Recipes</a></li>
 			    <li><a href="{{ url_for('get_recipes') }}">Recipe Ideas</a></li>
-			    <li><a href="{{ url_for('manage_recipes') }}">Manage Recipes</a></li>
                 {% if session.is_admin %}
 			        <li><a href="{{ url_for('admin') }}">Admin Panel</a></li>
                 {% endif %}

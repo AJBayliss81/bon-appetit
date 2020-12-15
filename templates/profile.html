@@ -21,7 +21,7 @@
                 </div>
                 <div class="col s3 profile-buttons">
                     <a href="" class="btn-small green accent-4">View</a>
-                    <a href="" class="btn-small red accent-2">Edit</a>
+                    <a href="{{ url_for('manage_recipes', recipe_id=recipe._id) }}" class="btn-small orange accent-2">Edit</a>
                     <a href="" class="btn-small blue accent-2">Done</a>
                 </div>
             </div>

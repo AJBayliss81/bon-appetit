@@ -9,6 +9,88 @@
                 </h3>
             </div>
 		</div>
-	</div>
+    </div>
+    
+    <h3 class="center-align">Manage Recipe</h3>
+
+    <div class="row card-panel grey lighten-1">
+        <form class="col s12" method="POST" action="{{ url_for('manage_recipes', recipe_id=recipe._id) }}">
+            <!---- Cuisine dropdown input ---->
+            <div class="row">
+                <div class="input-field col s10 offset-s1">
+                    <i class="fas fa-globe-americas prefix text-shadow"></i>
+                    <select id="cuisine" name="cuisine" class="validate" required>
+                        <option value="" disabled>Select Cuisine</option>
+                        {% for cuisine in cuisines %}
+                            {% if cuisine.cuisine == recipe.cuisine %}
+                                <option value="{{ cuisine.cuisine }}" selected>{{ cuisine.cuisine.capitalize() }}</option>
+                            {% else %}
+                                <option value="{{ cuisine.cuisine }}">{{ cuisine.cuisine.capitalize() }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <label for="cuisine">Cuisine</label>
+                </div>
+            </div>
+            <!---- Name of dish input ---->
+            <div class="row">
+                <div class="input-field col s10 offset-s1">
+                    <i class="fas fa-utensils prefix text-shadow"></i>
+                    <input id="dish_name" name="dish_name" minlength="5" maxlength="50"
+                        value="{{ recipe.dish_name }}" type="text" class="validate" required>
+                    <label for="dish_name">Name of Dish</label>
+                </div>
+            </div>
+            <!---- Dish description input ---->
+            <div class="row">
+                <div class="input-field col s10 offset-s1">
+                    <i class="fas fa-scroll prefix text-shadow"></i>
+                    <textarea id="description" name="description" minlength="5" maxlength="500" 
+                        class="materialize-textarea validate" required>
+                    {{- recipe.description -}}
+                    </textarea>
+                    <label for="Description">Description of dish</label>
+                </div>
+            </div>
+            <!---- Ingredients input ---->
+            <div class="row">
+                <div class="col s10 offset-s1 center-align">
+                    <p>Please ensure a new line is added for each new ingredient and step of the method.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s10 offset-s1">
+                    <i class="fas fa-receipt prefix text-shadow"></i>
+                    <textarea id="ingredients" name="ingredients" minlength="5" maxlength="2000" 
+                        class="materialize-textarea validate" required>
+                    {{- recipe.ingredients -}}
+                    </textarea>
+                    <label for="ingredients">Ingredients</label>
+                </div>
+            </div>
+            <!---- Method input ---->
+            <div class="row">
+                <div class="input-field col s10 offset-s1">
+                    <i class="fas fa-list-ol prefix text-shadow"></i>
+                    <textarea id="method" name="method" minlength="5" maxlength="2000" 
+                        class="materialize-textarea validate" required>
+                    {{- recipe.method -}}
+                    </textarea>
+                    <label for="method">Method</label>
+                </div>
+            </div>
+            <!---- Submit button ---->
+            <div class="row">
+                <div class="col s10 offset-s1 center-align">
+                    <button type="submit" class="btn teal darken-2 text-shadow">
+                        Edit Recipe <i class="far fa-edit right"></i>
+                    </button>
+                    <a href="{{ url_for('profile', username=session['user']) }}" class="btn red darken-2 text-shadow">
+                        Cancel <i class="far fa-times-circle text-shadow right"></i>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
 
 {% endblock %}
