@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="row">
+		<div class="col s12 m8 offset-m2">
+			<div class="card-panel teal">
+                <h3 class="center-align light-blue-text text-darken-4">
+                    {{ username }}'s Profile
+                </h3>
+            </div>
+		</div>
+	</div>
+    {% if recipes %}
+    
+    {% for recipe in recipes %}
+    <ul class="collapsible popout">
+        <li>
+            <div class="collapsible-header">
+                <div class="col s9">
+                    <i class="fas fa-clipboard-list text-shadow"></i>
+                    <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
+                </div>
+                <div class="col s3 profile-buttons">
+                    <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}" class="btn-small green accent-4">View</a>
+                </div>
+            </div>
+            <div class="collapsible-body">
+                <strong>Cuisine: {{ recipe.cuisine.capitalize() }}</strong>
+                <p>{{ recipe.description }}</p>
+                <p><em>submitted by: {{ recipe.submitted_by }}</em></p>
+            </div>
+        </li>
+    </ul>
+
+    {% endfor %}
+    {% else %}
+    <div class="row">
+    <h3 class="col s12 center-align">Sorry, no recipes have been submitted yet. Try again later.</h3>
+    </div>
+    {% endif %}
+
+{% endblock %}

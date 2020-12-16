@@ -52,7 +52,7 @@ top: 15vh;
 /*----- Cuisine card -----*/
 
 .cuisine-image {
-    max-height: 30vw;
+    max-height: 28vw;
     object-fit: cover;
 }
 
@@ -60,8 +60,22 @@ top: 15vh;
     font-size: 4vw;
 }
 
+.hidden {
+    display: none;
+}
+
+.card .cuisine-image-btn {
+    z-index: 1;
+    position: relative;
+}
+
 /*----- Media queries -----*/
-    
+
+@media (max-width: 595px) {
+    .card .cuisine-image-title {
+        font-size: 6vw;
+    }
+}
 @media (max-width: 350px) {
     nav .brand-logo {
         font-size: 1.7rem;

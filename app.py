@@ -23,12 +23,27 @@ mongo = PyMongo(app)
 def home():
     return render_template("index.html")
 
+# Search functionality
 
 @app.route("/get_recipe/<recipe_id>")
 def get_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("recipes.html", recipe=recipe)
 
+
+@app.route("/browse")
+def browse():
+    cuisines = list(mongo.db.cuisine.find().sort("cuisine", 1))
+    return render_template("browse.html", cuisines=cuisines)
+
+
+@app.route("/cuisine_recipes", methods=["GET", "POST"])
+def cuisine_recipes():
+    browse = request.form.get("browse")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": browse}}))
+    return render_template("cuisine_recipes.html", username=session["user"], recipes=recipes)
+
+# Login/out & register functionality
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -85,6 +100,15 @@ def login():
     return render_template("login.html")
 
 
+@app.route("/logout")
+def logout():
+    # remove the session cookie to allow user to logout
+    flash("You have successfully been logged out")
+    session.pop("user")
+    return redirect(url_for("login"))
+
+# Profile and admin functionality
+
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -113,14 +137,7 @@ def admin():
 
     return redirect(url_for("login"))
 
-
-@app.route("/logout")
-def logout():
-    # remove the session cookie to allow user to logout
-    flash("You have successfully been logged out")
-    session.pop("user")
-    return redirect(url_for("login"))
-
+# CRUD functionality for recipes
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
@@ -175,6 +192,7 @@ def manage_recipes(recipe_id):
     return render_template("manage_recipes.html",
         cuisines=cuisines, recipe=recipe, username=username)
 
+# CRUD functionality for cuisines
 
 @app.route("/add_cuisine", methods=["GET", "POST"])
 def add_cuisine():
@@ -208,12 +226,6 @@ def edit_cuisine(cuisine_id):
 
     cuisine = mongo.db.cuisine.find_one({"_id": ObjectId(cuisine_id)})
     return render_template("edit_cuisine.html", cuisine=cuisine)
-
-
-@app.route("/browse")
-def browse():
-    cuisines = list(mongo.db.cuisine.find().sort("cuisine", 1))
-    return render_template("browse.html", cuisines=cuisines)
 
 
 if __name__ == "__main__":
