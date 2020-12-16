@@ -49,8 +49,19 @@ top: 15vh;
     font-size: 3vw;
 }
 
-/*----- Media queries -----*/
+/*----- Cuisine card -----*/
 
+.cuisine-image {
+    max-height: 30vw;
+    object-fit: cover;
+}
+
+.card .cuisine-image-title {
+    font-size: 4vw;
+}
+
+/*----- Media queries -----*/
+    
 @media (max-width: 350px) {
     nav .brand-logo {
         font-size: 1.7rem;
