@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="center-align">Browse Recipes</h3>
+     <div class="row">  
+    {% for cuisine in cuisines %}
+        <div class="col s6 m4">
+            <div class="card light-blue darken-4 text-shadow center-align">
+                <div class="card-content white-text">
+                    <strong class="card-title cuisine-title">{{ cuisine.cuisine.capitalize() }}</strong>
+                </div>
+                <div class="card-action">
+                    <a href="#" class="btn-small orange accent-2">View Recipes</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div> 
+
+{% endblock %}

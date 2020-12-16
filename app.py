@@ -210,6 +210,12 @@ def edit_cuisine(cuisine_id):
     return render_template("edit_cuisine.html", cuisine=cuisine)
 
 
+@app.route("/browse")
+def browse():
+    cuisines = list(mongo.db.cuisine.find().sort("cuisine", 1))
+    return render_template("browse.html", cuisines=cuisines)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
