@@ -193,11 +193,19 @@ def add_cuisine():
 def delete_cuisine(cuisine_id):
     mongo.db.cuisine.remove({"_id": ObjectId(cuisine_id)})
     flash("Cuisine Successfully Deleted")
-    return redirect(url_for("profile", username=session["user"]))
+    return redirect(url_for("admin", username=session["user"]))
 
 
 @app.route("/edit_cuisine/<cuisine_id>", methods=["GET", "POST"])
 def edit_cuisine(cuisine_id):
+    if request.method == "POST":
+        submit = {
+            "cuisine": request.form.get("cuisine")
+        }
+        mongo.db.cuisine.update({"_id": ObjectId(cuisine_id)}, submit)
+        flash("Category Successfully Updated")
+        return redirect(url_for("admin", username=session["user"]))
+
     cuisine = mongo.db.cuisine.find_one({"_id": ObjectId(cuisine_id)})
     return render_template("edit_cuisine.html", cuisine=cuisine)
 
