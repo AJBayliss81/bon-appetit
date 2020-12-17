@@ -23,8 +23,8 @@ mongo = PyMongo(app)
 def home():
     return render_template("index.html")
 
-# Search functionality
 
+# Search functionality
 @app.route("/get_recipe/<recipe_id>")
 def get_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -43,8 +43,13 @@ def cuisine_recipes():
     recipes = list(mongo.db.recipes.find({"$text": {"$search": browse}}))
     return render_template("cuisine_recipes.html", username=session["user"], recipes=recipes)
 
-# Login/out & register functionality
 
+@app.route("/search")
+def search():
+    return render_template("search.html")
+
+
+# Login/out & register functionality
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -107,8 +112,8 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-# Profile and admin functionality
 
+# Profile and admin functionality
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     # grab the session user's username from db
@@ -137,8 +142,8 @@ def admin():
 
     return redirect(url_for("login"))
 
-# CRUD functionality for recipes
 
+# CRUD functionality for recipes
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
     if request.method == "POST":
@@ -192,8 +197,8 @@ def manage_recipes(recipe_id):
     return render_template("manage_recipes.html",
         cuisines=cuisines, recipe=recipe, username=username)
 
-# CRUD functionality for cuisines
 
+# CRUD functionality for cuisines
 @app.route("/add_cuisine", methods=["GET", "POST"])
 def add_cuisine():
     if request.method == "POST":

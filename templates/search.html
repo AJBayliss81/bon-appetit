@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h3 class="center-align">Search for recipe ideas</h3>
+
+<div class="row">
+    <div class="col s12 m6">
+        <div class="card-panel teal">
+            <div class="row">
+                <span class="white-text col s10 offset-s1 center-align">
+                    Search by name of dish.
+                </span>
+                <div class="input-field col s12">
+                    <i class="fas fa-utensils prefix text-shadow"></i>
+                    <input id="dish_name" name="dish_name" minlength="4" maxlength="50" type="text" class="validate"
+                        required>
+                    <label for="dish_name">Name of Dish</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col s12 m6">
+        <div class="card-panel teal">
+            <div class="row">
+                <span class="white-text col s10 offset-s1 center-align">If you are unsure of what to cook, let us help.
+                    Enter up to 3 ingredients to get
+                    some inspiration on ideas for meals.
+                </span>
+                <div class="input-field col s12">
+                    <i class="fas fa-utensils prefix text-shadow"></i>
+                    <input id="#" name="#" minlength="4" maxlength="50" type="text" class="validate" required>
+                    <label for="#">Name of Dish</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
