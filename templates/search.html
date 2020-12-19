@@ -3,65 +3,84 @@
 
 <h3 class="center-align">Search for recipe ideas</h3>
 
-<div class="row">
+<!---- Search collapsible ---->
+<div class="row center-align">
     <div class="col s10 offset-s1">
-        <div class="card-panel teal">
-            <div class="row">
-                <span class="white-text col s10 offset-s1 center-align">
-                    Search by name of dish.
-                </span>
-                <form action="{{ url_for('search_dish') }}" method="POST" class="col s12">
-                    <div class="row center-align">
-                        <div class="input-field col s9 offset-s1">
-                            <i class="fas fa-search prefix text-shadow"></i>
-                            <input id="dish" name="dish" minlength="4" maxlength="50" type="text" class="validate"
-                                required>
-                            <label for="dish">Name of Dish</label>
-                        </div>
+        <ul class="collapsible teal">
+            <!---- Dish search ---->
+            <li class="active">
+                <div class="collapsible-header teal">
+                    <i class="fas fa-pizza-slice"></i>
+                    Search by Dish
+                </div>
+                <div class="collapsible-body">
+                    <div class="row">
+                        <span class="white-text col s10 offset-s1 center-align">
+                            Search by name of dish.
+                        </span>
+                        <form action="{{ url_for('search_dish') }}" method="POST" class="col s12">
+                            <div class="row center-align">
+                                <div class="input-field col s9 offset-s1">
+                                    <i class="fas fa-search prefix text-shadow"></i>
+                                    <input id="dish" name="dish" minlength="4" maxlength="50" type="text"
+                                        class="validate" required>
+                                    <label for="dish">Name of Dish</label>
+                                </div>
+                            </div>
+                            <div class="row center-align">
+                                <button type="submit" class="btn col s6 offset-s3 teal text-shadow">
+                                    Search
+                                </button>
+                            </div>
+                            <div class="row center-align">
+                                <a href="{{ url_for('search') }}"
+                                    class="btn col s6 offset-s3 red darken-3 text-shadow">Reset</a>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col s10 offset-s1">
-        <div class="card-panel teal">
-            <div class="row">
-                <span class="white-text col s10 offset-s1 center-align">If you are unsure of what to cook, let us help.
-                    Enter up to 3 ingredients to get
-                    some inspiration on ideas for meals.
-                </span>
-                <form action="{{ url_for('search_ingredients') }}" method="POST" class="col s12">
-                    <div class="row center-align">
-                        <div class="input-field col s9 offset-s1">
-                            <i class="fas fa-search prefix text-shadow"></i>
-                            <input id="ingredient1" name="ingredient1" minlength="4" maxlength="20" 
-                                type="text" class="validate" required>
-                            <label for="ingredient1">Ingredient 1</label>
-                        </div>
+                </div>
+            </li>
+            <!---- Ingredients search ---->
+            <li>
+                <div class="collapsible-header teal">
+                    <i class="fas fa-carrot"></i>
+                    Search by Ingredients
+                </div>
+                <div class="collapsible-body">
+                    <div class="row">
+                        <span class="white-text col s10 offset-s1 center-align">If you are unsure of what to cook, let
+                            us help.
+                            Got some ingredients in your cupboard and not sure what to do with them? Why not see if you
+                            can get some inspiration!
+                        </span>
+                        <form action="{{ url_for('search_ingredients') }}" method="POST" class="col s12">
+                            <div class="row center-align">
+                                <div class="input-field col s9 offset-s1">
+                                    <i class="fas fa-search prefix text-shadow"></i>
+                                    <input id="ingredients" name="ingredients" minlength="3" maxlength="20" type="text"
+                                        class="validate" required>
+                                    <label for="ingredients">Ingredients</label>
+                                </div>
+                            </div>
+                            <div class="row center-align">
+                                <button type="submit" class="btn col s6 offset-s3 teal text-shadow">
+                                    Search
+                                </button>
+                            </div>
+                            <div class="row center-align">
+                                <a href="{{ url_for('search') }}"
+                                    class="btn col s6 offset-s3 red darken-3 text-shadow">Reset</a>
+                            </div>
+                        </form>
                     </div>
-                    <div class="row center-align">
-                        <div class="input-field col s9 offset-s1">
-                            <i class="fas fa-search prefix text-shadow"></i>
-                            <input id="ingredient2" name="ingredient2" minlength="4" maxlength="20" 
-                                type="text" class="validate" required>
-                            <label for="ingredient2">Ingredient 2</label>
-                        </div>
-                    </div>
-                    <div class="row valign-wrapper center-align">
-                        <div class="input-field col s9 offset-s1">
-                            <i class="fas fa-search prefix text-shadow"></i>
-                            <input id="ingredient3" name="ingredient3" minlength="4" maxlength="20" 
-                                type="text" class="validate" required>
-                            <label for="ingredient3">Ingredient 3</label>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+                </div>
+            </li>
+        </ul>
     </div>
 </div>
+
+<!---- Collapsible for all recipes ---->
+{% if recipes|length > 0 %}
 <div class="row">
 {% for recipe in recipes %}
 <ul class="collapsible popout">
@@ -84,4 +103,5 @@
 </ul>
 {% endfor %}
 </div>
+{% endif %}
 {% endblock %}

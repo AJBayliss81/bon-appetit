@@ -53,15 +53,15 @@ def search():
 
 @app.route("/search_dish", methods=["GET", "POST"])
 def search_dish():
-    dish = request.form.get("ingredient1")
+    dish = request.form.get("dish")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": dish}}))
     return render_template("search.html", recipes=recipes)
 
 
 @app.route("/search_ingredients", methods=["GET", "POST"])
 def search_ingredients():
-    ingredient1 = request.form.get("ingredient1")
-    recipes = list(mongo.db.recipes.find({"$text": {"$search": ingredient1}}))
+    ingredients = request.form.get("ingredients")
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": ingredients}}))
     return render_template("search.html", recipes=recipes)
 
 

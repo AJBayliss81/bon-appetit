@@ -69,6 +69,10 @@ top: 15vh;
     position: relative;
 }
 
+/*----- Search -----*/
+
+
+
 /*----- Media queries -----*/
 
 @media (max-width: 595px) {
@@ -76,10 +80,15 @@ top: 15vh;
         font-size: 6vw;
     }
 }
+
 @media (max-width: 350px) {
     nav .brand-logo {
         font-size: 1.7rem;
         left: 30%;
-        transform: translateX(-10%)
+        /* transform: translateX(-10%) */
+    }
+
+    .button-wrapper {
+        display: block;
     }
 }
