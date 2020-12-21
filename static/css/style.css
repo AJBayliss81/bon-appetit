@@ -69,9 +69,15 @@ top: 15vh;
     position: relative;
 }
 
-/*----- Search -----*/
+/*----- Recipes -----*/
 
+#add_comment {
+    height: 10em;
+}
 
+#rateYo {
+    left: 21vw;
+}
 
 /*----- Media queries -----*/
 

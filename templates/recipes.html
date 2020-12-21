@@ -6,6 +6,7 @@
         <h5>Dish Name: {{ recipe.dish_name.capitalize() }}</h5>
         </div>
             
+            <!---- Ingredients card ---->
             <div class="row">
                 <div class="col s12 m10 offset-m1">
                     <div class="card blue-grey darken-1">
@@ -24,6 +25,7 @@
                 </div>
             </div>
             
+            <!---- Method card ---->
             <div class="row">
                 <div class="col s12 m10 offset-m1">
                     <div class="card blue-grey darken-1">
@@ -36,6 +38,81 @@
                                 {% for method in recipe.method.splitlines() %}
                                 {{ method }}<br>
                                 {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!---- Add comment card ---->
+            <div class="row">
+                <div class="col s12 m10 offset-m1">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">Add Comment:</span>
+                            <div class="row">
+                                <form class="col s12" method="POST" action="{{ url_for('add_comment', recipe_id=recipe._id) }}">
+                                    
+                                    <div class="input-field col s10 offset-s1">
+                                        <i class="fas fa-utensils prefix text-shadow"></i>
+                                        <textarea id="add_comment" name="add_comment" minlength="5" maxlength="500" type="text"
+                                            class="validate" required></textarea>
+                                        <label for="add_comment">Add Comment</label>
+                                            </div>
+                                            <div class="row">
+                                            <div class="col s12">
+                                                <div id="rateYo"></div>
+                                            </div>
+                                            </div>
+                                    <!---- Submit button ---->
+                                    <div class="row">
+                                        <div class="col s10 offset-s1 center-align">
+                                            <button type="submit" class="btn teal darken-2 text-shadow">
+                                                Submit Comment <i class="far fa-plus-square right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!---- Comments card ---->
+            <div class="row">
+                <div class="col s12 m10 offset-m1">
+                    <div class="card blue-grey darken-1">
+                        <div class="card-content white-text">
+                            <span class="card-title">Comments:</span>
+                            <div>
+                                {% if comments|length > 0 %}
+                                {% for comment in comments %}
+                                <div class="row">
+                                    <div class="col s12 m10 offset-m1">
+                                        <div class="card teal darken-1">
+                                            <div class="card-content white-text">
+                                                <div class="row">
+                                                    <div class="col s10 offset-s1 center-align">
+                                                        {{ comment.comment }}
+                                                    </div>
+                                                    <div class="col s10 offset-s1 center-align">
+                                                        <em>{{ comment.submitted_by }}</em>
+                                                        <em>{{ comment.submission_date }}</em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                                {% else %}
+                                <div class="row">
+                                    <div class="col s12 m10 offset-m1">
+                                        <span>There are no comments submitted for this recipe yet. Why not be the first?</span>
+                                    </div>
+                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

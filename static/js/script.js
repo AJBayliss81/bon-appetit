@@ -71,3 +71,17 @@ $("#methodToggle").click(function() {
 
     return false;
 });
+
+$(function () {
+ 
+  $("#rateYo").rateYo({
+ 
+    rating    : 3.0,
+    fullStar: true,
+    multiColor: {
+      "startColor": "#c0392b",
+      "endColor"  : "#f1c40f"
+    }
+  });
+ 
+});

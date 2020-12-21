@@ -1,6 +1,7 @@
-import os, datetime
+import os
+import datetime
 from flask import (
-    Flask, flash, render_template,
+    Flask, flash, render_template, jsonify,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -28,7 +29,8 @@ def home():
 @app.route("/get_recipe/<recipe_id>")
 def get_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("recipes.html", recipe=recipe)
+    comments = list(mongo.db.comments.find({"recipe_id": recipe_id}))
+    return render_template("recipes.html", recipe=recipe, comments=comments)
 
 
 @app.route("/browse")
@@ -247,6 +249,28 @@ def edit_cuisine(cuisine_id):
 
     cuisine = mongo.db.cuisine.find_one({"_id": ObjectId(cuisine_id)})
     return render_template("edit_cuisine.html", cuisine=cuisine)
+
+
+# CRUD functionality for comments
+@app.route("/add_comment/<recipe_id>", methods=["GET", "POST"])
+def add_comment(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    comments = mongo.db.comments.find({"recipe_id": ObjectId(recipe_id)})
+    if request.method == "POST":
+        date = datetime.datetime.now()
+        comment = {
+            "comment": request.form.get("add_comment"),
+            "recipe_id": recipe_id,
+            "rating": request.form.get("rateYo"),
+            "submitted_by": session["user"],
+            "submission_date": date.strftime("%d %B, %Y"),
+        }
+        mongo.db.comments.insert_one(comment)
+        flash("Comment Successfully Added")
+        return render_template(
+            "recipes.html", recipe=recipe, comments=comments)
+
+    return render_template("recipes.html", recipe=recipe, comments=comments)
 
 
 if __name__ == "__main__":
