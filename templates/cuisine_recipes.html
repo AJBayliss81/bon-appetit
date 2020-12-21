@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
+
     {% if recipes %}
-    
     {% for recipe in recipes %}
+    <div class="row">
+        <h3 class="center-align">{{ recipe.cuisine.capitalize() }} Cuisine</h3>
+    </div>
     <ul class="collapsible popout">
         <li>
             <div class="collapsible-header">
@@ -26,7 +29,10 @@
     {% endfor %}
     {% else %}
     <div class="row">
-    <h3 class="col s12 center-align">Sorry, no recipes have been submitted yet. Try again later.</h3>
+        <h3 class="center-align">{{ recipe.cuisine.capitalize() }} Cuisine</h3>
+    </div>
+    <div class="row">
+        <h3 class="col s12 center-align">Sorry, no recipes have been submitted yet. Try again later.</h3>
     </div>
     {% endif %}
 
