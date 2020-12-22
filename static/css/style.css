@@ -1,13 +1,20 @@
 /*----- Text -----*/
 body {
     color: #c5c3c6;
-    background: url(/static/images/kitchen.jpg);
-    background-repeat: no-repeat;
+    background: url(/static/images/kitchen.jpg) no-repeat;
     background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .text-shadow {
 text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7)
+}
+
+.sorry {
+    position: absolute;
+    top: 40%;
+    left: 10%;
 }
 
 /*----- Flash messages -----*/
@@ -56,9 +63,16 @@ nav {
     line-height: 30px;
 }
 
-.profile-buttons {
+/*----- Buttons -----*/
+
+#profile-buttons {
     margin-left: auto;
     text-align: center;
+}
+
+.btn-small  {
+    color: #dcdcdd;
+    font-weight: 800;
 }
 
 /*----- Admin panel -----*/

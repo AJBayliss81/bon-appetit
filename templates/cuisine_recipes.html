@@ -28,10 +28,7 @@
 
     {% endfor %}
     {% else %}
-    <div class="row">
-        <h3 class="center-align">{{ recipe.cuisine.capitalize() }} Cuisine</h3>
-    </div>
-    <div class="row">
+    <div class="row sorry">
         <h3 class="col s12 center-align">Sorry, no recipes have been submitted yet. Try again later.</h3>
     </div>
     {% endif %}
