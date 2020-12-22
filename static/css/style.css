@@ -1,4 +1,7 @@
 /*----- Text -----*/
+body {
+    color: #c5c3c6;
+}
 
 .text-shadow {
 text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7)
@@ -8,6 +11,15 @@ text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7)
 
 .flashes {
     line-height: 2;
+}
+
+/*----- Cards -----*/
+.backing {
+    background-color: #46494c;
+}
+
+.light-backing {
+    background-color: #4c5c68;
 }
 
 /*----- Landing page -----*/
@@ -22,7 +34,10 @@ top: 15vh;
 }
 
 /*----- Navbar -----*/
-
+nav {
+    background-image: linear-gradient(to right, #4c5c68 , #46494c);
+    border-bottom: 3px solid #1985a1;
+}
 .brand-logo {
     margin-left: 10px;
 }
@@ -75,9 +90,20 @@ top: 15vh;
     height: 10em;
 }
 
-#rateYo {
-    left: 21vw;
+/*----- Modal -----*/
+
+.modal .modal-footer {
+    background-color: #4c5c68;
 }
+
+/*----- Comments -----*/
+
+.col .comment {
+    padding: 20px 0;
+}
+
+.comment-buttons
+
 
 /*----- Media queries -----*/
 
@@ -87,13 +113,3 @@ top: 15vh;
     }
 }
 
-@media (max-width: 350px) {
-    nav .brand-logo {
-        font-size: 1.7rem;
-        left: 30%;
-    }
-
-    .button-wrapper {
-        display: block;
-    }
-}

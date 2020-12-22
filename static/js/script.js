@@ -3,7 +3,7 @@ $(document).ready(function () {
     $(".collapsible").collapsible();
     $('.modal').modal();
     $(".dropdown-trigger").dropdown();
-    $(".dropdown-content>li>a").css("background-color", "red");
+    $(".dropdown-content li a").css({"background-color": "#4c5c68", "color": "#c5c3c6"});
     $(".tooltipped").tooltip();
     $("select").formSelect();
 
@@ -35,6 +35,8 @@ $(document).ready(function () {
         });
     }
 });
+
+/*---- Show/hide buttons ----*/
 
 $("#cuisinesToggle").click(function() {
     if($(this).text()=="Show Cuisines ")
@@ -72,16 +74,39 @@ $("#methodToggle").click(function() {
     return false;
 });
 
-$(function () {
- 
-  $("#rateYo").rateYo({
- 
-    rating    : 3.0,
-    fullStar: true,
-    multiColor: {
-      "startColor": "#c0392b",
-      "endColor"  : "#f1c40f"
-    }
-  });
- 
+/*---- Dropdown mouseover/out ----*/
+
+$(".profile-dd").mouseover(function() {
+    $('.profile-dd').css("background-color", "#46494c");
+});
+$(".profile-dd").mouseout(function() {
+    $('.profile-dd').css("background-color", "#4c5c68");
+});
+
+$(".browse-dd").mouseover(function() {
+    $('.browse-dd').css("background-color", "#46494c");
+});
+$(".browse-dd").mouseout(function() {
+    $('.browse-dd').css("background-color", "#4c5c68");
+});
+
+$(".add-dd").mouseover(function() {
+    $('.add-dd').css("background-color", "#46494c");
+});
+$(".add-dd").mouseout(function() {
+    $('.add-dd').css("background-color", "#4c5c68");
+});
+
+$(".recipe-dd").mouseover(function() {
+    $('.recipe-dd').css("background-color", "#46494c");
+});
+$(".recipe-dd").mouseout(function() {
+    $('.recipe-dd').css("background-color", "#4c5c68");
+});
+
+$(".admin-dd").mouseover(function() {
+    $('.admin-dd').css("background-color", "#46494c");
+});
+$(".admin-dd").mouseout(function() {
+    $('.admin-dd').css("background-color", "#4c5c68");
 });

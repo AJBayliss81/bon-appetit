@@ -139,10 +139,12 @@ def profile(username):
         {"username": session["user"]})["username"].capitalize()
     # grab the recipe list from db for session user
     recipes = list(mongo.db.recipes.find({"submitted_by": session["user"]}))
+    # grab the session user comments from db
+    comments = list(mongo.db.comments.find({"submitted_by": session["user"]}))
 
     if session["user"]:
-        return render_template(
-            "profile.html", username=username, recipes=recipes)
+        return render_template("profile.html",
+            username=username, recipes=recipes, comments=comments)
 
     return redirect(url_for("login"))
 
@@ -271,6 +273,31 @@ def add_comment(recipe_id):
             "recipes.html", recipe=recipe, comments=comments)
 
     return render_template("recipes.html", recipe=recipe, comments=comments)
+
+
+@app.route("/delete_comment/<comment_id>")
+def delete_comment(comment_id):
+    mongo.db.comments.remove({"_id": ObjectId(comment_id)})
+    flash("Comment Successfully Deleted")
+    return redirect(url_for("profile", username=session["user"]))
+
+
+@app.route("/edit_comment/<comment_id>", methods=["GET", "POST"])
+def edit_comment(comment_id):
+    if request.method == "POST":
+        date = datetime.datetime.now()
+        submit = {
+            "comment": request.form.get("edit_comment"),
+            "recipe_id": request.form.get("recipe_id"),
+            "submitted_by": session["user"],
+            "submission_date": date.strftime("%d %B, %Y"),
+        }
+        mongo.db.comments.update({"_id": ObjectId(comment_id)}, submit)
+        flash("Comment Successfully Updated")
+        return redirect(url_for("profile", username=session["user"]))
+
+    comment = mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
+    return render_template("edit_comment.html", comment=comment, username=session["user"])
 
 
 if __name__ == "__main__":
