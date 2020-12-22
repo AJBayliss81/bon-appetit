@@ -1,6 +1,9 @@
 /*----- Text -----*/
 body {
     color: #c5c3c6;
+    background: url(/static/images/kitchen.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .text-shadow {
