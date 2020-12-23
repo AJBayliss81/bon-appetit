@@ -257,18 +257,18 @@ def edit_cuisine(cuisine_id):
 @app.route("/add_comment/<recipe_id>", methods=["GET", "POST"])
 def add_comment(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    comments = mongo.db.comments.find({"recipe_id": ObjectId(recipe_id)})
+    comments = list(mongo.db.comments.find({"recipe_id": recipe_id}))
     if request.method == "POST":
         date = datetime.datetime.now()
         comment = {
             "comment": request.form.get("add_comment"),
             "recipe_id": recipe_id,
-            "rating": request.form.get("rateYo"),
             "submitted_by": session["user"],
             "submission_date": date.strftime("%d %B, %Y"),
         }
         mongo.db.comments.insert_one(comment)
         flash("Comment Successfully Added")
+        comments = list(mongo.db.comments.find({"recipe_id": recipe_id}))
         return render_template(
             "recipes.html", recipe=recipe, comments=comments)
 
