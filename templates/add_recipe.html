@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align text-shadow border">Add New Recipe</h3>
+    <h3 class="center-align text-shadow title border">Add New Recipe</h3>
 
-    <div class="row card-panel light-backing border">
+    <div class="row card-panel spacer light-backing border">
         <form class="col s12" method="POST" action="{{ url_for('add_recipe') }}">
             <!---- Cuisine dropdown input ---->
             <div class="row">
@@ -67,6 +67,8 @@
                     <button type="submit" class="btn-small green darken-2 text-shadow">
                         Submit Recipe <i class="far fa-plus-square right"></i>
                     </button>
+                    <a href="{{ url_for('profile', username=session['user']) }}"
+                                class="btn-small red darken-2 text-shadow">Cancel</a>
                 </div>
             </div>
         </form>

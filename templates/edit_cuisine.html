@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align">Edit Cuisine</h3>
+    <h3 class="center-align title border spacer">Edit Cuisine</h3>
 
-    <div class="row card-panel grey lighten-1">
+    <div class="row card-panel light-backing border">
         <form class="col s12" method="POST" action="{{ url_for('edit_cuisine', cuisine_id=cuisine._id) }}">
             
             <!---- Add cuisine input ---->
@@ -18,10 +18,10 @@
             <!---- Submit button ---->
             <div class="row">
                 <div class="col s10 offset-s1 center-align">
-                    <button type="submit" class="btn teal darken-2 text-shadow">
+                    <button type="submit" class="btn-small green darken-2 text-shadow">
                         Edit Cuisine <i class="fas fa-edit right"></i>
                     </button>
-                    <a href="{{ url_for('admin') }}" class="btn red darken-2 text-shadow">
+                    <a href="{{ url_for('admin') }}" class="btn-small red darken-2 text-shadow">
                         Cancel <i class="fas fa-times-cirlce"></i>
                     </a>
                 </div>

@@ -2,15 +2,15 @@
 {% block content %}
 
     <div class="row">
-		<div class="col s12 m8 offset-m2">
-			<div class="card-panel backing border">
-                <h3 class="text-shadow border">
+		<div class="col s12 m6 offset-m2">
+			<div class="card-panel spacer backing border">
+                <h3 class="text-shadow title border">
                     {{ username }}'s Profile
                 </h3>
             </div>
 		</div>
 	</div>
-<h3 class="text-shadow border">Submitted recipes:</h3>
+<h3 class="text-shadow title border">Submitted recipes:</h3>
 
 <div class="row">
     <ul class="collapsible">
@@ -23,10 +23,10 @@
                 </div>
                 <div class="col s4" id="profile-buttons">
                     <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}"
-                        class="btn-small green darken-2">View</a>
+                        class="btn-small green darken-2 text-shadow">View</a>
                     <a href="{{ url_for('manage_recipes', recipe_id=recipe._id) }}"
-                        class="btn-small orange darken-2">Edit</a>
-                    <a href="#delete_modal{{ recipe._id }}" class="modal-trigger btn-small red darken-2">Delete</a>
+                        class="btn-small orange darken-2 text-shadow">Edit</a>
+                    <a href="#delete_modal{{ recipe._id }}" class="modal-trigger btn-small red darken-2 text-shadow">Delete</a>
                 </div>
             </div>
             <div class="collapsible-body light-backing">
@@ -39,27 +39,27 @@
         <!---- Confirm recipe deletion modal ---->
         <div id="delete_modal{{ recipe._id }}" class="modal">
             <div class="modal-content light-backing">
-                <h4 class="text-shadow border">Confirm Deletion</h4>
+                <h4 class="text-shadow title border">Confirm Deletion</h4>
                 <p>Are you sure that you want to delete this recipe: {{recipe.dish_name }}?</p>
             </div>
             <div class="modal-footer light-backing">
                 <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
-                    class="modal-close btn-small green darken-2">Delete</a>
+                    class="modal-close btn-small green darken-2 text-shadow">Delete</a>
                 <a href="{{ url_for('profile', username=session['user']) }}"
-                    class="modal-close btn-small red darken-2">Cancel</a>
+                    class="modal-close btn-small red darken-2 text-shadow">Cancel</a>
             </div>
         </div>
         {% endfor %}
     </ul>
 </div>
 
-<h3 class="text-shadow border">Submitted comments:</h3>
+<h3 class="text-shadow title border">Submitted comments:</h3>
 
 <div class="row">
     <div class="col s12">
         <div class="card light-backing border">
             <div class="card-content">
-                <span class="card-title text-shadow">Comments:</span>
+                <span class="card-title text-shadow title border">Comments:</span>
                 <div>
                     {% if comments|length > 0 %}
                     {% for comment in comments %}
@@ -78,10 +78,10 @@
                                         <div class="row">
                                             <div class="col s12 offset-s3 comment-buttons center-align">
                                                 <div class="col s3">
-                                                    <a href="{{ url_for('edit_comment', comment_id=comment._id) }}" class="btn-small orange darken-2">Edit</a>
+                                                    <a href="{{ url_for('edit_comment', comment_id=comment._id) }}" class="btn-small orange darken-2 text-shadow">Edit</a>
                                                 </div>
                                                 <div class="col s3">
-                                                    <a href="#delete-comment-modal{{ comment._id }}" class="modal-trigger btn-small red darken-2">Delete</a>
+                                                    <a href="#delete-comment-modal{{ comment._id }}" class="modal-trigger btn-small red darken-2 text-shadow">Delete</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,14 +94,14 @@
                     <!---- Confirm comment deletion modal ---->
                     <div id="delete-comment-modal{{ comment._id }}" class="modal">
                         <div class="modal-content light-backing">
-                            <h4 class="text-shadow border">Confirm Deletion</h4>
+                            <h4 class="text-shadow title border">Confirm Deletion</h4>
                             <p>Are you sure that you want to delete this comment?</p>
                         </div>
                         <div class="modal-footer light-backing">
                             <a href="{{ url_for('delete_comment', comment_id=comment._id) }}"
-                                class="modal-close btn-small green darken-2">Delete</a>
+                                class="modal-close btn-small green darken-2 text-shadow">Delete</a>
                             <a href="{{ url_for('profile', username=session['user']) }}"
-                                class="modal-close btn-small red darken-2">Cancel</a>
+                                class="modal-close btn-small red darken-2 text-shadow">Cancel</a>
                         </div>
                     </div>
 

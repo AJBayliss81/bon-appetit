@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align">Search for recipe ideas</h3>
+<h3 class="center-align title border">Search for recipe ideas</h3>
 
 <!---- Search collapsible ---->
 <div class="row center-align">
     <div class="col s12">
-        <ul class="collapsible teal">
+        <ul class="collapsible">
             <!---- Dish search ---->
             <li class="active">
-                <div class="collapsible-header teal">
+                <div class="collapsible-header backing">
                     <i class="fas fa-pizza-slice"></i>
                      Click Here to Search by Dish
                 </div>
-                <div class="collapsible-body">
+                <div class="collapsible-body light-backing">
                     <div class="row">
-                        <span class="white-text col s10 offset-s1 center-align">
+                        <span class="col s10 offset-s1 center-align">
                             Search by name of dish.
                         </span>
                         <form action="{{ url_for('search_dish') }}" method="POST" class="col s12">
@@ -28,13 +28,13 @@
                                 </div>
                             </div>
                             <div class="row center-align">
-                                <button type="submit" class="btn col s6 offset-s3 teal text-shadow">
+                                <button type="submit" class="btn-small col s4 offset-s4 green darken-2 text-shadow">
                                     Search
                                 </button>
                             </div>
                             <div class="row center-align">
                                 <a href="{{ url_for('search') }}"
-                                    class="btn col s6 offset-s3 red darken-3 text-shadow">Reset</a>
+                                    class="btn-small col s4 offset-s4 red darken-2 text-shadow">Reset</a>
                             </div>
                         </form>
                     </div>
@@ -42,13 +42,13 @@
             </li>
             <!---- Ingredients search ---->
             <li>
-                <div class="collapsible-header teal">
+                <div class="collapsible-header backing">
                     <i class="fas fa-carrot"></i>
                     Click Here to Search by Ingredients
                 </div>
-                <div class="collapsible-body">
+                <div class="collapsible-body light-backing">
                     <div class="row">
-                        <span class="white-text col s10 offset-s1 center-align">If you are unsure of what to cook, let
+                        <span class="col s10 offset-s1 center-align">If you are unsure of what to cook, let
                             us help.
                             Got some ingredients in your cupboard and not sure what to do with them? Why not see if you
                             can get some inspiration!
@@ -63,13 +63,13 @@
                                 </div>
                             </div>
                             <div class="row center-align">
-                                <button type="submit" class="btn col s6 offset-s3 teal text-shadow">
+                                <button type="submit" class="btn-small col s4 offset-s4 green darken-2 text-shadow">
                                     Search
                                 </button>
                             </div>
                             <div class="row center-align">
                                 <a href="{{ url_for('search') }}"
-                                    class="btn col s6 offset-s3 red darken-3 text-shadow">Reset</a>
+                                    class="btn-small col s4 offset-s4 red darken-2 text-shadow">Reset</a>
                             </div>
                         </form>
                     </div>
@@ -85,16 +85,16 @@
 {% for recipe in recipes %}
 <ul class="collapsible popout">
     <li>
-        <div class="collapsible-header">
+        <div class="collapsible-header backing">
             <div class="col s9">
                 <i class="fas fa-clipboard-list text-shadow"></i>
                 <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
             </div>
-            <div class="col s3 profile-buttons">
-                <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}" class="btn-small green accent-4">View</a>
+            <div class="col s3 offset-s1 profile-buttons">
+                <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}" class="btn-small green darken-2 text-shadow">View</a>
             </div>
         </div>
-        <div class="collapsible-body">
+        <div class="collapsible-body light-backing">
             <strong>Cuisine: {{ recipe.cuisine.capitalize() }}</strong>
             <p>{{ recipe.description }}</p>
             <p><em>submitted by: {{ recipe.submitted_by }}</em></p>

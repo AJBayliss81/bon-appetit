@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lato&display=swap');
+
 /*----- Text -----*/
 body {
     color: #c5c3c6;
@@ -5,6 +7,17 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    font-family: 'Lato', sans-serif;
+}
+
+.cursive {
+    font-family: 'Dancing Script', cursive;
+}
+
+h2,
+h3,
+h4 {
+    font-family: 'Dancing Script', cursive;
 }
 
 .text-shadow {
@@ -14,20 +27,15 @@ text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7)
 .sorry {
     position: absolute;
     top: 40%;
-    left: 10%;
 }
 
 .sidenav>li>a{
     color: #c5c3c6;
 }
 
-h2,
-h3,
-h4 {
-    color: #c5c3c6;
-    padding: 5px;
-    width: fit-content;
-    background: rgba(0, 0, 0, 0.7);
+.large-text {
+    font-size: 3vw;
+    margin-bottom: 5px;
 }
 
 /*----- Flash messages -----*/
@@ -44,14 +52,15 @@ h4 {
 
 /*----- Cards -----*/
 
-.card-panel {
-    margin: 4vw 0;
+.spacer {
+    margin-top: 4vw;
+    margin-bottom: 4vw;
 }
 
-.card-title {
+.title {
     color: #c5c3c6;
     padding: 5px;
-    width: 100%;
+    width: fit-content;
     background: rgba(0, 0, 0, 0.7);
 }
 
@@ -76,6 +85,10 @@ h4 {
 
 .card .cuisine-image-title {
     font-size: 4vw;
+    color: #c5c3c6;
+    padding: 5px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .hidden {
@@ -92,6 +105,8 @@ h4 {
 #welcome {
 top: 0;
 font-size: 5vw;
+width: fit-content;
+height: fit-content;
 }
 
 .welcome-card {
@@ -161,6 +176,12 @@ nav {
 @media (max-width: 595px) {
     .card .cuisine-image-title {
         font-size: 6vw;
+    }
+
+    nav a.brand-logo {
+        font-size: 2rem;
+        left: 20%;
+        transform: translateX(-25%);
     }
 }
 

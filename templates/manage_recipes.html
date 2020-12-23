@@ -3,17 +3,17 @@
 
     <div class="row">
 		<div class="col s12 m8 offset-m2">
-			<div class="card-panel teal">
-                <h3 class="center-align light-blue-text text-darken-4">
+			<div class="card-panel spacer backing border">
+                <h3 class="center-align title border">
                     Manage {{ username }}'s Submitted Recipes 
                 </h3>
             </div>
 		</div>
     </div>
     
-    <h3 class="center-align">Manage Recipe</h3>
+    <h3 class="center-align title border">Manage Recipe</h3>
 
-    <div class="row card-panel grey lighten-1">
+    <div class="row card-panel spacer light-backing border">
         <form class="col s12" method="POST" action="{{ url_for('manage_recipes', recipe_id=recipe._id) }}">
             <!---- Cuisine dropdown input ---->
             <div class="row">
@@ -56,7 +56,7 @@
             <div class="row">
                 <div class="col s12 center-align">
                 <div class="col s10 offset-s1 center-align">
-                    <p>Please ensure a new line is added for each new ingredient and step of the method.</p>
+                    <strong><em>Please ensure a new line is added for each new ingredient and step of the method.</em></strong>
                 </div>
                 </div>
             </div>
@@ -84,10 +84,10 @@
             <!---- Submit button ---->
             <div class="row">
                 <div class="col s10 offset-s1 center-align">
-                    <button type="submit" class="btn teal darken-2 text-shadow">
+                    <button type="submit" class="btn-small green darken-2 text-shadow">
                         Edit Recipe <i class="far fa-edit right"></i>
                     </button>
-                    <a href="{{ url_for('profile', username=session['user']) }}" class="btn red darken-2 text-shadow">
+                    <a href="{{ url_for('profile', username=session['user']) }}" class="btn-small red darken-2 text-shadow">
                         Cancel <i class="far fa-times-circle text-shadow right"></i>
                     </a>
                 </div>
