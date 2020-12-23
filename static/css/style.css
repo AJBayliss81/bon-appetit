@@ -17,13 +17,44 @@ text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7)
     left: 10%;
 }
 
+.sidenav>li>a{
+    color: #c5c3c6;
+}
+
+h2,
+h3,
+h4 {
+    color: #c5c3c6;
+    padding: 5px;
+    width: fit-content;
+    background: rgba(0, 0, 0, 0.7);
+}
+
 /*----- Flash messages -----*/
 
 .flashes {
     line-height: 2;
 }
 
+/*----- Collapsibles -----*/
+
+.collapsible {
+    margin-top: 4vw;
+}
+
 /*----- Cards -----*/
+
+.card-panel {
+    margin: 4vw 0;
+}
+
+.card-title {
+    color: #c5c3c6;
+    padding: 5px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
 .backing {
     background-color: #46494c;
 }
@@ -31,51 +62,6 @@ text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7)
 .light-backing {
     background-color: #4c5c68;
 }
-
-/*----- Landing page -----*/
-
-#welcome {
-top: 0;
-font-size: 5vw;
-}
-
-.welcome-card {
-top: 15vh;
-}
-
-/*----- Navbar -----*/
-nav {
-    background-image: linear-gradient(to right, #4c5c68 , #46494c);
-    border-bottom: 3px solid #1985a1;
-}
-.brand-logo {
-    margin-left: 10px;
-}
-
-/*----- Recipe list -----*/
-
-.btn-small {
-    margin: 2px;
-}
-
-.collapsible-header .col strong {
-    margin: 5px;
-    line-height: 30px;
-}
-
-/*----- Buttons -----*/
-
-#profile-buttons {
-    margin-left: auto;
-    text-align: center;
-}
-
-.btn-small  {
-    color: #dcdcdd;
-    font-weight: 800;
-}
-
-/*----- Admin panel -----*/
 
 .card .cuisine-title {
     font-size: 3vw;
@@ -101,6 +87,50 @@ nav {
     position: relative;
 }
 
+/*----- Landing page -----*/
+
+#welcome {
+top: 0;
+font-size: 5vw;
+}
+
+.welcome-card {
+top: 15vh;
+}
+
+/*----- Navbar -----*/
+nav {
+    background-image: linear-gradient(to right, #4c5c68 , #46494c);
+    border-bottom: 3px solid #1985a1;
+}
+.brand-logo {
+    margin-left: 10px;
+}
+
+/*----- Recipe list -----*/
+
+.collapsible-header .col strong {
+    margin: 5px;
+    line-height: 30px;
+}
+
+/*----- Buttons -----*/
+
+#profile-buttons {
+    margin-left: auto;
+    text-align: center;
+}
+
+.btn-small  {
+    color: #dcdcdd;
+    font-weight: 800;
+    margin: 2px;
+}
+
+.btn-small.hover {
+    background-color: #1985a1 !important;
+}
+
 /*----- Recipes -----*/
 
 #add_comment {
@@ -119,8 +149,12 @@ nav {
     padding: 20px 0;
 }
 
-.comment-buttons
+/*----- Border -----*/
 
+.border {
+    border: 3px solid #1985a1;
+    border-radius: 10px;
+}
 
 /*----- Media queries -----*/
 

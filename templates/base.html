@@ -27,10 +27,10 @@
 			        <li><a href="{{ url_for('home') }}">Home</a></li>
                     {% if session.user %}
                         <ul id="dropdown" class="dropdown-content">
-                        <li><a href="{{ url_for('profile', username=session['user']) }}" class="profile-dd">Profile</a></li>
-			            <li><a href="{{ url_for('add_recipe') }}" class="add-dd">Add Recipe</a></li>
-			            <li><a href="{{ url_for('browse') }}" class="browse-dd">Browse Recipes</a></li>
-			            <li><a href="{{ url_for('search') }}" class="recipe-dd">Recipe Ideas</a></li>
+                        <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+			            <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+			            <li><a href="{{ url_for('browse') }}">Browse Recipes</a></li>
+			            <li><a href="{{ url_for('search') }}">Recipe Ideas</a></li>
 			            {% if session.is_admin %}
 			                <li><a href="{{ url_for('admin') }}" class="admin-dd">Admin Panel</a></li>
                         {% endif %}
@@ -46,8 +46,8 @@
 		</nav>
 	
         <!---- Side navbar --->
-		<ul class="sidenav" id="mobile-demo">
-            <li><h4 class="center-align">Bon Appetit</h4></li>
+		<ul class="sidenav light-backing text-shadow" id="mobile-demo">
+            <li><h4 class="center-align border">Bon Appetit</h4></li>
 			<li><a href="{{ url_for('home') }}">Home</a></li>
             {% if session.user %}
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>

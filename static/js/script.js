@@ -76,37 +76,19 @@ $("#methodToggle").click(function() {
 
 /*---- Dropdown mouseover/out ----*/
 
-$(".profile-dd").mouseover(function() {
-    $('.profile-dd').css("background-color", "#46494c");
+$(".dropdown-content li a").mouseover(function() {
+    $(this).css("background-color", "#46494c");
 });
-$(".profile-dd").mouseout(function() {
-    $('.profile-dd').css("background-color", "#4c5c68");
-});
-
-$(".browse-dd").mouseover(function() {
-    $('.browse-dd').css("background-color", "#46494c");
-});
-$(".browse-dd").mouseout(function() {
-    $('.browse-dd').css("background-color", "#4c5c68");
+$(".dropdown-content li a").mouseout(function() {
+    $(this).css("background-color", "#4c5c68");
 });
 
-$(".add-dd").mouseover(function() {
-    $('.add-dd').css("background-color", "#46494c");
-});
-$(".add-dd").mouseout(function() {
-    $('.add-dd').css("background-color", "#4c5c68");
-});
 
-$(".recipe-dd").mouseover(function() {
-    $('.recipe-dd').css("background-color", "#46494c");
-});
-$(".recipe-dd").mouseout(function() {
-    $('.recipe-dd').css("background-color", "#4c5c68");
-});
+/*---- Buttons mouseover/out ----*/
 
-$(".admin-dd").mouseover(function() {
-    $('.admin-dd').css("background-color", "#46494c");
+$(".btn-small").mouseover(function() {
+    $(this).addClass("hover");
 });
-$(".admin-dd").mouseout(function() {
-    $('.admin-dd').css("background-color", "#4c5c68");
+$(".btn-small").mouseout(function() {
+    $(this).removeClass("hover");
 });

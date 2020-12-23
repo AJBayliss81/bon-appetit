@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <h3 class="center-align">Browse Recipes</h3>
+    <h3 class="center-align text-shadow border">Browse Recipes</h3>
     <div class="row">  
     {% for cuisine in cuisines %}
     <div class="col s6 m4">
-        <div class="card light-blue darken-4 text-shadow center-align">
+        <div class="card backing text-shadow center-align border">
             <div class="card-image">
                 <img class="cuisine-image" src="static/images/{{ cuisine.cuisine }}.jpg">
                 <strong class="card-title cuisine-image-title">{{ cuisine.cuisine.capitalize() }}</strong>

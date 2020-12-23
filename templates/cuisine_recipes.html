@@ -3,33 +3,34 @@
 
 
     {% if recipes %}
-    {% for recipe in recipes %}
-    <div class="row">
-        <h3 class="center-align">{{ recipe.cuisine.capitalize() }} Cuisine</h3>
-    </div>
-    <ul class="collapsible popout">
-        <li>
-            <div class="collapsible-header">
-                <div class="col s9">
-                    <i class="fas fa-clipboard-list text-shadow"></i>
-                    <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
-                </div>
-                <div class="col s3 profile-buttons">
-                    <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}" class="btn-small green accent-4">View</a>
-                </div>
-            </div>
-            <div class="collapsible-body">
-                <strong>Cuisine: {{ recipe.cuisine.capitalize() }}</strong>
-                <p>{{ recipe.description }}</p>
-                <p><em>submitted by: {{ recipe.submitted_by }}</em></p>
-            </div>
-        </li>
-    </ul>
-
-    {% endfor %}
+        {% for recipe in recipes %}
+        
+        <h3 class="text-shadow border">{{ recipe.cuisine.capitalize() }} Cuisine</h3>
+        
+        <div class="row">
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header backing">
+                        <div class="col s8">
+                            <i class="fas fa-clipboard-list text-shadow"></i>
+                            <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
+                        </div>
+                        <div class="col s3 offset-s4 profile-buttons">
+                            <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}"
+                                class="btn-small green darken-2">View</a>
+                        </div>
+                    </div>
+                    <div class="collapsible-body light-backing">
+                        <strong>Cuisine: {{ recipe.cuisine.capitalize() }}</strong>
+                        <p>{{ recipe.description }}</p>
+                        <p><em>submitted by: {{ recipe.submitted_by }}</em></p>
+                    </div>
+                </li>
+            </ul>
+        </div> {% endfor %}
     {% else %}
     <div class="row sorry">
-        <h3 class="col s12 center-align">Sorry, no recipes have been submitted yet. Try again later.</h3>
+        <h3 class="col s12 center-align text-shadow border">Sorry, no recipes have been submitted yet. Try again later.</h3>
     </div>
     {% endif %}
 
