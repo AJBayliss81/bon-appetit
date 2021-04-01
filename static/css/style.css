@@ -144,6 +144,10 @@ nav {
     margin: 2px;
 }
 
+.btn, .btn-small {
+    margin-bottom: 10px;
+}
+
 .btn-small.hover {
     background-color: #1985a1 !important;
 }
