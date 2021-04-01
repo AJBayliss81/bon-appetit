@@ -134,8 +134,7 @@ nav {
 
 /*----- Buttons -----*/
 
-#profile-buttons {
-    margin-left: auto;
+.profile-buttons {
     text-align: center;
 }
 
