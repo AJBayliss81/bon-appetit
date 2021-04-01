@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <!-- User profile name card -->
     <div class="row">
 		<div class="col s12 m6 offset-m2">
 			<div class="card-panel spacer backing border">
@@ -9,10 +10,11 @@
                 </h3>
             </div>
 		</div>
-	</div>
-<h3 class="text-shadow title border">Submitted recipes:</h3>
-
-<div class="row">
+    </div>
+    
+    <!-- Submitted recipes section -->
+    <h3 class="text-shadow title border">Submitted recipes:</h3>
+    <div class="row">
     <ul class="collapsible">
         {% for recipe in recipes %}
         <li>
@@ -53,8 +55,8 @@
     </ul>
 </div>
 
+<!-- Submitted comments section -->
 <h3 class="text-shadow title border">Submitted comments:</h3>
-
 <div class="row">
     <div class="col s12">
         <div class="card light-backing border">
