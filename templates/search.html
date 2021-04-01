@@ -86,11 +86,11 @@
 <ul class="collapsible popout">
     <li>
         <div class="collapsible-header backing">
-            <div class="col s9">
+            <div class="col s12">
                 <i class="fas fa-clipboard-list text-shadow"></i>
                 <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
             </div>
-            <div class="col s3 offset-s1 profile-buttons">
+            <div class="profile-buttons">
                 <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}" class="btn-small green darken-2 text-shadow">View</a>
             </div>
         </div>
