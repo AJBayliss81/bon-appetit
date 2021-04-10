@@ -6,6 +6,7 @@ A website for sharing and commenting on recipes.
 
 ## Table of Contents
 1. [**UX**](#ux)
+    - [**Wireframes**](#wireframes)
     - [**Project Goals**](#project-goals)
     - [**Player Goals**](#player-goals)
     - [**Developer Goals**](#developer-goals)
@@ -26,7 +27,7 @@ A website for sharing and commenting on recipes.
     - [**Bugs Discovered**](#bugs-discovered)
 
 6. [**Deployment**](#deployment)
-    - [**How to run this project locally**](#how-to-run-this-project-locally)
+    - [**How to deploy this project to Heroku**](#how-to-deploy-this-project-to-Heroku)
 
 7. [**Credits**](#credits)
     - [**Code**](#code)
@@ -37,6 +38,9 @@ A website for sharing and commenting on recipes.
 
 ## UX
 
+### Wireframes
+
+Wireframes for the project were created at [Figma](https://www.figma.com) and those for this project can be found [here](https://www.figma.com/file/V4hn1tOIEUD7Fw5bSUdZcl/MS3-Project---Bon-Appetit?node-id=2%3A6114)
 
 ### Project Goals  
   
@@ -229,9 +233,11 @@ The following process was conducted for all devices, with the desktop and laptop
     
 ### Validation services  
 Upon completion of the project the code was checked using the following resources and the corresponding feedback acted upon where appropriate.  
-- [HTML Validator](https://validator.w3.org/) - The only issue raised was a missing alt tag for the cuisine images, so one was added.
+- [HTML Validator](https://validator.w3.org/) - Errors shown are mostly related to Jinja templating, however there were two issues found on the base.html page where the validator stated the head, title and body tags were incorrectly used though they were all used correctly. The second issue was related to the use of one unordered list within another, which was used as per the documentation of the Materialize templating to allow for a dropdown list within the navbar.
 - [CSS Validator](https://jigsaw.w3.org/css-validator/) - many errors shown, but were relating to the various CDN sources.
 - [JSHint](https://jshint.com/) - checked the javascript, no errors were shown.  
+- [PEP8 Online Check](http://pep8online.com/) - checked the pyhton code and corrected all errors that were shown.  
+
   
 ### Bugs Discovered  
 - The bugs that were discovered through development have been fixed, so presently there are no known bugs in the deployed version.  
@@ -241,26 +247,21 @@ Upon completion of the project the code was checked using the following resource
 [GitPod](https://www.gitpod.io/) was the sole IDE used to deveop this project due to the synergy with [Git](https://git-scm.com/) and [GitHub](https://github.com/) for the hosting of repositories and version control.  
   
 Bon Appetit was deployed via [Heroku](http://ba-cook.herokuapp.com/) from its [GitHub repository](https://github.com/AJBayliss81/bon-appetit). This can be achieved by:  
-1. Logging in to Github.  
-2. Selecting the repository for deploying, eg. [Bon Appetit](https://github.com/AJBayliss81/bon-appetit).
-3. Clicking the **Settings** option at the end of the menubar below the repository name.  
-4. The penultimate section is for GitHub Pages.  
-5. Within this section the first options are for the source, with a drop-down box. 
-6. Select the _Master_ option from the branch box, the page will reload and a link for the deployed page will show.
-  
-### How to run this project locally  
-  
-Should you wish to pull the code to your own repository:  
-1. Login to your own Github.  
-2. Open the repository you wish to pull. eg. [Bon Appetit](https://github.com/AJBayliss81/bon-appetit).  
-3. Just above the file list is a green button `Clone`, click this.  
-4. Select from the options to clone via `HTTPS or SVN` using the link, open with `GitHub Destop` if the app is installed, or download as a `.zip` file.  
-5. Open Git Bash.  
-6. Change the current working directory to the location where you want the cloned directory to be made.  
-7. Type `git clone`, and then paste the URL you copied in Step 3.  
-8. Press `Enter`. Your local clone will be created.  
-
-Though this will clone the repository to view the code, full functionality will not be possible unless linked to a database from [MongoDB](https://www.mongodb.com) or similar. 
+1. Logging in to [Heroku](https://www.heroku.com).  
+2. Clicking on the "new" button towards the top right of the dashboard, beneath the search bar, and selecting the "create new app" from the dropdown menu.
+3. Input a new name for the project which must be unique, and select a region closest to your own.  
+4. Click on the "create app" button at the bottom of the form.  
+5. When taken to the next page select the "connect to GitHub" option from the deployment methods towards the centre of the page . 
+6. Before continuing, ensure that both Procfile and requirements.txt files are included in the required repository for deployment. If they are not created already the requirements.txt can be created by using the command "pip3 freeze > requirements.txt" in the terminal of your chosen IDE. The procfile can similarly be created by either right clicking on the file management window and selecting "new file", or navigating to the menu > file > new file. When inputting the name ensure the Procfile is capitalised.
+7. Search for the repository name from below the deployment options to find the correct repository.
+8. Once the app is connected to the desired repository you can select whether to enable automatic deploys on Heroku whenever the repository code is changed by clicking the "Enable Automatic Deploys" button from the automatic deploys section beneath the app connection section.
+9. Scroll back to the top of the page and select "settings" from the navbar.
+10. In the second "Config Vars" section click the "Reveal Config Vars" button.
+11. Enter all the key:value pairs that were used during the development of the project.
+12. Once completed scroll to the top and select the "Deploy" option again from the navbar.
+13. Scroll to the bottom "Manual Deploy" section and select the branch of the repoistory to deploy to Heroku, clicking on the "Deploy Branch" button once done.
+14. Wait while the deployment takes place. When completed a message at the bottom of the page will display "Your app was successfully deployed".
+15. Either click the "View" button displayed beneath the completion message, or scroll to the top of the page and click the "Open app" button to view the now deployed site. 
   
 ## Credits  
   
