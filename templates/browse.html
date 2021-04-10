@@ -2,6 +2,8 @@
 {% block content %}
 
     <h3 class="center-align title text-shadow border">Browse Recipes</h3>
+    
+    <!-- Cuisine Cards -->
     <div class="row">  
     {% for cuisine in cuisines %}
     <div class="col s6 m4">
@@ -11,21 +13,20 @@
                 <strong class="card-title cuisine-image-title">{{ cuisine.cuisine.capitalize() }}</strong>
             </div>
             
-            
-    
             <div class="card-action">
                 <div class="row">
                     <div class="col s12">
-                <form action="{{ url_for('cuisine_recipes') }}" method="POST" class="col s12">
-                    <div class="hidden">
-                        <input type="text" name="browse" id="browse" value="{{ cuisine.cuisine }}">
-                        <label for="browse"></label>
+                        <!-- Hidden form to search for cuisines in DB -->
+                        <form action="{{ url_for('cuisine_recipes') }}" method="POST" class="col s12">
+                            <div class="hidden">
+                                <input type="text" name="browse" id="browse" value="{{ cuisine.cuisine }}">
+                                <label for="browse"></label>
+                            </div>
+                            <button type="submit" class="btn-small cuisine-image-btn orange darken-2 text-shadow">
+                                View
+                            </button>
+                        </form>
                     </div>
-                    <button type="submit" class="btn-small cuisine-image-btn orange darken-2 text-shadow">
-                        View
-                    </button>
-                </form>
-                </div>
                 </div>
             </div>
         </div>
