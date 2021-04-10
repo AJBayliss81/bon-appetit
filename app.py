@@ -33,12 +33,15 @@ def get_recipe(recipe_id):
     return render_template("recipes.html", recipe=recipe, comments=comments)
 
 
+# List the cuisines found in the database
 @app.route("/browse")
 def browse():
     cuisines = list(mongo.db.cuisine.find().sort("cuisine", 1))
     return render_template("browse.html", cuisines=cuisines)
 
 
+# Take the cuisine name from the "browse" form and use that
+# to search the db
 @app.route("/cuisine_recipes", methods=["GET", "POST"])
 def cuisine_recipes():
     browse = request.form.get("browse")
@@ -48,12 +51,14 @@ def cuisine_recipes():
         "cuisine_recipes.html", recipes=recipes, cuisine=cuisine)
 
 
+# A simple search function to find all the recipes in the db
 @app.route("/search")
 def search():
     recipes = list(mongo.db.recipes.find())
     return render_template("search.html", recipes=recipes)
 
 
+# A search function to check if a specific dish is in the db
 @app.route("/search_dish", methods=["GET", "POST"])
 def search_dish():
     dish = request.form.get("dish")
@@ -61,6 +66,8 @@ def search_dish():
     return render_template("search.html", recipes=recipes)
 
 
+# A search function to check if a dish containing specific ingredients
+# is in the db
 @app.route("/search_ingredients", methods=["GET", "POST"])
 def search_ingredients():
     ingredients = request.form.get("ingredients")
@@ -94,6 +101,7 @@ def register():
     return render_template("register.html")
 
 
+# Functionality to log in
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -104,8 +112,8 @@ def login():
         if existing_user:
             # check if the password for existing user matches db
             # and create "session" cookie
-            if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+            if check_password_hash(existing_user["password"],
+                                   request.form.get("password")):
                     session["user"] = request.form.get("username").lower()
                     session["is_admin"] = existing_user["is_admin"]
                     flash("Welcome, {}".format(request.form.get(
@@ -124,6 +132,7 @@ def login():
     return render_template("login.html")
 
 
+# Logout functionality
 @app.route("/logout")
 def logout():
     # remove the session cookie to allow user to logout
@@ -144,12 +153,14 @@ def profile(username):
     comments = list(mongo.db.comments.find({"submitted_by": session["user"]}))
 
     if session["user"]:
-        return render_template("profile.html",
-            username=username, recipes=recipes, comments=comments)
+        return render_template(
+            "profile.html", username=username, recipes=recipes,
+            comments=comments)
 
     return redirect(url_for("login"))
 
 
+# Display the admin panel and CRUD functions
 @app.route("/admin")
 def admin():
     # grab the session user's username from db
@@ -159,7 +170,8 @@ def admin():
     cuisines = list(mongo.db.cuisine.find().sort("cuisine", 1))
 
     if session["is_admin"]:
-        return render_template("admin.html", username=username, cuisines=cuisines)
+        return render_template(
+            "admin.html", username=username, cuisines=cuisines)
 
     return redirect(url_for("login"))
 
@@ -186,6 +198,7 @@ def add_recipe():
     return render_template("add_recipe.html", cuisines=cuisines)
 
 
+# To delete recipes from db
 @app.route("/delete_recipe/<recipe_id>")
 def delete_recipe(recipe_id):
     mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
@@ -193,6 +206,7 @@ def delete_recipe(recipe_id):
     return redirect(url_for("profile", username=session["user"]))
 
 
+# Edit recipe functionality
 @app.route("/manage_recipes/<recipe_id>", methods=["GET", "POST"])
 def manage_recipes(recipe_id):
     if request.method == "POST":
@@ -215,11 +229,14 @@ def manage_recipes(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
     cuisines = mongo.db.cuisine.find().sort("cuisine", 1)
-    return render_template("manage_recipes.html",
-        cuisines=cuisines, recipe=recipe, username=username)
+    return render_template(
+        "manage_recipes.html", cuisines=cuisines, recipe=recipe,
+        username=username)
 
 
 # CRUD functionality for cuisines
+
+# Add new cuisines - Admin only
 @app.route("/add_cuisine", methods=["GET", "POST"])
 def add_cuisine():
     if request.method == "POST":
@@ -233,6 +250,7 @@ def add_cuisine():
     return render_template("add_cuisine.html")
 
 
+# Delete cuisines from db - Admin only
 @app.route("/delete_cuisine/<cuisine_id>")
 def delete_cuisine(cuisine_id):
     mongo.db.cuisine.remove({"_id": ObjectId(cuisine_id)})
@@ -240,6 +258,7 @@ def delete_cuisine(cuisine_id):
     return redirect(url_for("admin", username=session["user"]))
 
 
+# Edit cuisines in the db - Admin only
 @app.route("/edit_cuisine/<cuisine_id>", methods=["GET", "POST"])
 def edit_cuisine(cuisine_id):
     if request.method == "POST":
@@ -255,6 +274,8 @@ def edit_cuisine(cuisine_id):
 
 
 # CRUD functionality for comments
+
+# Add new comments to specific recipes
 @app.route("/add_comment/<recipe_id>", methods=["GET", "POST"])
 def add_comment(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -276,6 +297,7 @@ def add_comment(recipe_id):
     return render_template("recipes.html", recipe=recipe, comments=comments)
 
 
+# Delete users own specific comments
 @app.route("/delete_comment/<comment_id>")
 def delete_comment(comment_id):
     mongo.db.comments.remove({"_id": ObjectId(comment_id)})
@@ -283,6 +305,7 @@ def delete_comment(comment_id):
     return redirect(url_for("profile", username=session["user"]))
 
 
+# Edit user's own comments
 @app.route("/edit_comment/<comment_id>", methods=["GET", "POST"])
 def edit_comment(comment_id):
     if request.method == "POST":
@@ -298,7 +321,8 @@ def edit_comment(comment_id):
         return redirect(url_for("profile", username=session["user"]))
 
     comment = mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
-    return render_template("edit_comment.html", comment=comment, username=session["user"])
+    return render_template(
+        "edit_comment.html", comment=comment, username=session["user"])
 
 
 if __name__ == "__main__":
