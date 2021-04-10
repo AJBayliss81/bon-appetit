@@ -43,8 +43,9 @@ def browse():
 def cuisine_recipes():
     browse = request.form.get("browse")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": browse}}))
+    cuisine = browse
     return render_template(
-        "cuisine_recipes.html", recipes=recipes)
+        "cuisine_recipes.html", recipes=recipes, cuisine=cuisine)
 
 
 @app.route("/search")

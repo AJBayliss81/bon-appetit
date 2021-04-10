@@ -3,10 +3,11 @@
 
 
     {% if recipes %}
+    <!-- Cuisine name -->
+    <h3 class="text-shadow title border">{{ cuisine.capitalize() }} Cuisine</h3>
         {% for recipe in recipes %}
-        
-        <h3 class="text-shadow title border">{{ recipe.cuisine.capitalize() }} Cuisine</h3>
-        
+
+        <!-- Recipes -->
         <div class="row">
             <ul class="collapsible">
                 <li>
@@ -29,6 +30,8 @@
             </ul>
         </div> {% endfor %}
     {% else %}
+
+    <!-- If no recipes to display -->
     <div class="row sorry">
         <h3 class="col s8 offset-s2 center-align text-shadow title border">Sorry, no recipes have been submitted yet. Try again later.</h3>
         <a href="{{ url_for('browse') }}"
