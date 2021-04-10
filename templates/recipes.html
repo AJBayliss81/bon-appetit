@@ -6,7 +6,7 @@
         <h5>Dish Name: {{ recipe.dish_name.capitalize() }}</h5>
         </div>
             
-            <!---- Ingredients card ---->
+            <!-- Ingredients card -->
             <div class="row">
                 <div class="col s12 m10 offset-m1">
                     <div class="card backing border">
@@ -25,7 +25,7 @@
                 </div>
             </div>
             
-            <!---- Method card ---->
+            <!-- Method card -->
             <div class="row">
                 <div class="col s12 m10 offset-m1">
                     <div class="card backing border">
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <!---- Add comment card ---->
+            <!-- Add comment card -->
             <div class="row">
                 <div class="col s12 m10 offset-m1">
                     <div class="card backing border">
@@ -54,11 +54,11 @@
                                 <form class="col s12" method="POST" action="{{ url_for('add_comment', recipe_id=recipe._id) }}">
                                     <div class="input-field col s10 offset-s1">
                                         <i class="fas fa-utensils prefix text-shadow"></i>
-                                        <textarea id="add_comment" name="add_comment" minlength="5" maxlength="500" type="text" class="validate"
+                                        <textarea id="add_comment" name="add_comment" minlength="5" maxlength="500" class="validate"
                                             required></textarea>
                                         <label for="add_comment">Add Comment</label>
                                     </div>
-                                    <!---- Submit button ---->
+                                    <!-- Submit button -->
                                     <div class="row">
                                         <div class="col s10 offset-s1 center-align">
                                             <button type="submit" class="btn-small green darken-2 text-shadow">
@@ -73,7 +73,7 @@
                 </div>
             </div>
 
-            <!---- Comments card ---->
+            <!-- Comments card -->
             <div class="row">
                 <div class="col s12 m10 offset-m1">
                     <div class="card light-backing border">
@@ -101,6 +101,7 @@
                                 </div>
                                 {% endfor %}
                                 {% else %}
+                                <!-- No submitted comments to display -->
                                 <div class="row">
                                     <div class="col s12 m10 offset-m1">
                                         <span>There are no comments submitted for this recipe yet. Why not be the first?</span>

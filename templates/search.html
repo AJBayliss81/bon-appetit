@@ -1,107 +1,108 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h3 class="center-align title border">Search for recipe ideas</h3>
+    <h3 class="center-align title border">Search for recipe ideas</h3>
 
-<!---- Search collapsible ---->
-<div class="row center-align">
-    <div class="col s12">
-        <ul class="collapsible">
-            <!---- Dish search ---->
-            <li class="active">
-                <div class="collapsible-header backing">
-                    <i class="fas fa-pizza-slice"></i>
-                     Click Here to Search by Dish
-                </div>
-                <div class="collapsible-body light-backing">
-                    <div class="row">
-                        <span class="col s10 offset-s1 center-align">
-                            Search by name of dish.
-                        </span>
-                        <form action="{{ url_for('search_dish') }}" method="POST" class="col s12">
-                            <div class="row center-align">
-                                <div class="input-field col s9 offset-s1">
-                                    <i class="fas fa-search prefix text-shadow"></i>
-                                    <input id="dish" name="dish" minlength="4" maxlength="50" type="text"
-                                        class="validate" required>
-                                    <label for="dish">Name of Dish</label>
-                                </div>
-                            </div>
-                            <div class="row center-align">
-                                <button type="submit" class="btn-small col s4 offset-s4 green darken-2 text-shadow">
-                                    Search
-                                </button>
-                            </div>
-                            <div class="row center-align">
-                                <a href="{{ url_for('search') }}"
-                                    class="btn-small col s4 offset-s4 red darken-2 text-shadow">Reset</a>
-                            </div>
-                        </form>
+    <!-- Search collapsible -->
+    <div class="row center-align">
+        <div class="col s12">
+            <ul class="collapsible">
+                <!-- Dish search -->
+                <li class="active">
+                    <div class="collapsible-header backing">
+                        <i class="fas fa-pizza-slice"></i>
+                        Click Here to Search by Dish
                     </div>
-                </div>
-            </li>
-            <!---- Ingredients search ---->
-            <li>
-                <div class="collapsible-header backing">
-                    <i class="fas fa-carrot"></i>
-                    Click Here to Search by Ingredients
-                </div>
-                <div class="collapsible-body light-backing">
-                    <div class="row">
-                        <span class="col s10 offset-s1 center-align">If you are unsure of what to cook, let
-                            us help.
-                            Got some ingredients in your cupboard and not sure what to do with them? Why not see if you
-                            can get some inspiration!
-                        </span>
-                        <form action="{{ url_for('search_ingredients') }}" method="POST" class="col s12">
-                            <div class="row center-align">
-                                <div class="input-field col s9 offset-s1">
-                                    <i class="fas fa-search prefix text-shadow"></i>
-                                    <input id="ingredients" name="ingredients" minlength="3" maxlength="20" type="text"
-                                        class="validate" required>
-                                    <label for="ingredients">Ingredients</label>
+                    <div class="collapsible-body light-backing">
+                        <div class="row">
+                            <span class="col s10 offset-s1 center-align">
+                                Search by name of dish.
+                            </span>
+                            <form action="{{ url_for('search_dish') }}" method="POST" class="col s12">
+                                <div class="row center-align">
+                                    <div class="input-field col s9 offset-s1">
+                                        <i class="fas fa-search prefix text-shadow"></i>
+                                        <input id="dish" name="dish" minlength="4" maxlength="50" type="text"
+                                            class="validate" required>
+                                        <label for="dish">Name of Dish</label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row center-align">
-                                <button type="submit" class="btn-small col s4 offset-s4 green darken-2 text-shadow">
-                                    Search
-                                </button>
-                            </div>
-                            <div class="row center-align">
-                                <a href="{{ url_for('search') }}"
-                                    class="btn-small col s4 offset-s4 red darken-2 text-shadow">Reset</a>
-                            </div>
-                        </form>
+                                <div class="row center-align">
+                                    <button type="submit" class="btn-small col s4 offset-s4 green darken-2 text-shadow">
+                                        Search
+                                    </button>
+                                </div>
+                                <div class="row center-align">
+                                    <a href="{{ url_for('search') }}"
+                                        class="btn-small col s4 offset-s4 red darken-2 text-shadow">Reset</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+                
+                <!-- Ingredients search -->
+                <li>
+                    <div class="collapsible-header backing">
+                        <i class="fas fa-carrot"></i>
+                        Click Here to Search by Ingredients
+                    </div>
+                    <div class="collapsible-body light-backing">
+                        <div class="row">
+                            <span class="col s10 offset-s1 center-align">If you are unsure of what to cook, let
+                                us help.
+                                Got some ingredients in your cupboard and not sure what to do with them? Why not see if you
+                                can get some inspiration!
+                            </span>
+                            <form action="{{ url_for('search_ingredients') }}" method="POST" class="col s12">
+                                <div class="row center-align">
+                                    <div class="input-field col s9 offset-s1">
+                                        <i class="fas fa-search prefix text-shadow"></i>
+                                        <input id="ingredients" name="ingredients" minlength="3" maxlength="20" type="text"
+                                            class="validate" required>
+                                        <label for="ingredients">Ingredients</label>
+                                    </div>
+                                </div>
+                                <div class="row center-align">
+                                    <button type="submit" class="btn-small col s4 offset-s4 green darken-2 text-shadow">
+                                        Search
+                                    </button>
+                                </div>
+                                <div class="row center-align">
+                                    <a href="{{ url_for('search') }}"
+                                        class="btn-small col s4 offset-s4 red darken-2 text-shadow">Reset</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
 
-<!---- Collapsible for all recipes ---->
-{% if recipes|length > 0 %}
-<div class="row">
-{% for recipe in recipes %}
-<ul class="collapsible popout">
-    <li>
-        <div class="collapsible-header backing">
-            <div class="col s12">
-                <i class="fas fa-clipboard-list text-shadow"></i>
-                <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
+    <!-- Collapsible for all recipes -->
+    {% if recipes|length > 0 %}
+    <div class="row">
+    {% for recipe in recipes %}
+    <ul class="collapsible popout">
+        <li>
+            <div class="collapsible-header backing">
+                <div class="col s12">
+                    <i class="fas fa-clipboard-list text-shadow"></i>
+                    <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
+                </div>
+                <div class="profile-buttons">
+                    <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}" class="btn-small green darken-2 text-shadow">View</a>
+                </div>
             </div>
-            <div class="profile-buttons">
-                <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}" class="btn-small green darken-2 text-shadow">View</a>
+            <div class="collapsible-body light-backing">
+                <strong>Cuisine: {{ recipe.cuisine.capitalize() }}</strong>
+                <p>{{ recipe.description }}</p>
+                <p><em>submitted by: {{ recipe.submitted_by }}</em></p>
             </div>
-        </div>
-        <div class="collapsible-body light-backing">
-            <strong>Cuisine: {{ recipe.cuisine.capitalize() }}</strong>
-            <p>{{ recipe.description }}</p>
-            <p><em>submitted by: {{ recipe.submitted_by }}</em></p>
-        </div>
-    </li>
-</ul>
-{% endfor %}
-</div>
-{% endif %}
+        </li>
+    </ul>
+    {% endfor %}
+    </div>
+    {% endif %}
 {% endblock %}

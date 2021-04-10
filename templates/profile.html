@@ -15,110 +15,111 @@
     <!-- Submitted recipes section -->
     <h3 class="text-shadow title border">Submitted recipes:</h3>
     <div class="row">
-    <ul class="collapsible">
-        {% for recipe in recipes %}
-        <li>
-            <div class="collapsible-header backing">
-                <div class="col s8">
-                    <i class="fas fa-clipboard-list text-shadow"></i>
-                    <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
+        <ul class="collapsible">
+            {% for recipe in recipes %}
+            <li>
+                <div class="collapsible-header backing">
+                    <div class="col s8">
+                        <i class="fas fa-clipboard-list text-shadow"></i>
+                        <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
+                    </div>
+                    <!-- Profile buttons -->
+                    <div class="col s4 center-align" id="profile-buttons">
+                        <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}"
+                            class="btn-small green darken-2 text-shadow">View</a>
+                        <a href="{{ url_for('manage_recipes', recipe_id=recipe._id) }}"
+                            class="btn-small orange darken-2 text-shadow">Edit</a>
+                        <a href="#delete_modal{{ recipe._id }}" class="modal-trigger btn-small red darken-2 text-shadow">Delete</a>
+                    </div>
                 </div>
-                <!-- Profile buttons -->
-                <div class="col s4 center-align" id="profile-buttons">
-                    <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}"
-                        class="btn-small green darken-2 text-shadow">View</a>
-                    <a href="{{ url_for('manage_recipes', recipe_id=recipe._id) }}"
-                        class="btn-small orange darken-2 text-shadow">Edit</a>
-                    <a href="#delete_modal{{ recipe._id }}" class="modal-trigger btn-small red darken-2 text-shadow">Delete</a>
+                <div class="collapsible-body light-backing">
+                    <strong>Cuisine: {{ recipe.cuisine.capitalize() }}</strong>
+                    <p>{{ recipe.description }}</p>
+                    <p><em>submitted by: {{ recipe.submitted_by }}</em></p>
+                </div>
+            </li>
+
+            <!-- Confirm recipe deletion modal -->
+            <div id="delete_modal{{ recipe._id }}" class="modal">
+                <div class="modal-content light-backing">
+                    <h4 class="text-shadow title border">Confirm Deletion</h4>
+                    <p>Are you sure that you want to delete this recipe: {{recipe.dish_name }}?</p>
+                </div>
+                <div class="modal-footer light-backing">
+                    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
+                        class="modal-close btn-small green darken-2 text-shadow">Delete</a>
+                    <a href="{{ url_for('profile', username=session['user']) }}"
+                        class="modal-close btn-small red darken-2 text-shadow">Cancel</a>
                 </div>
             </div>
-            <div class="collapsible-body light-backing">
-                <strong>Cuisine: {{ recipe.cuisine.capitalize() }}</strong>
-                <p>{{ recipe.description }}</p>
-                <p><em>submitted by: {{ recipe.submitted_by }}</em></p>
-            </div>
-        </li>
+            {% endfor %}
+        </ul>
+    </div>
 
-        <!---- Confirm recipe deletion modal ---->
-        <div id="delete_modal{{ recipe._id }}" class="modal">
-            <div class="modal-content light-backing">
-                <h4 class="text-shadow title border">Confirm Deletion</h4>
-                <p>Are you sure that you want to delete this recipe: {{recipe.dish_name }}?</p>
-            </div>
-            <div class="modal-footer light-backing">
-                <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
-                    class="modal-close btn-small green darken-2 text-shadow">Delete</a>
-                <a href="{{ url_for('profile', username=session['user']) }}"
-                    class="modal-close btn-small red darken-2 text-shadow">Cancel</a>
-            </div>
-        </div>
-        {% endfor %}
-    </ul>
-</div>
-
-<!-- Submitted comments section -->
-<h3 class="text-shadow title border">Submitted comments:</h3>
-<div class="row">
-    <div class="col s12">
-        <div class="card light-backing border">
-            <div class="card-content">
-                <span class="card-title text-shadow title border">Comments:</span>
-                <div>
-                    {% if comments|length > 0 %}
-                    {% for comment in comments %}
-                    <div class="row">
-                        <div class="col s12 m10 offset-m1">
-                            <div class="card backing">
-                                <div class="card-content">
-                                    <div class="row">
-                                        <div class="col s12 center-align comment">
-                                            {{ comment.comment }}
-                                        </div>
-                                        <div class="col s12 center-align comment">
-                                            <em>{{ comment.submitted_by }}</em>
-                                            <em>{{ comment.submission_date }}</em>
-                                        </div>
-                                        <!-- Comments buttons -->
+    <!-- Submitted comments section -->
+    <h3 class="text-shadow title border">Submitted comments:</h3>
+    <div class="row">
+        <div class="col s12">
+            <div class="card light-backing border">
+                <div class="card-content">
+                    <span class="card-title text-shadow title border">Comments:</span>
+                    <div>
+                        {% if comments|length > 0 %}
+                        {% for comment in comments %}
+                        <div class="row">
+                            <div class="col s12 m10 offset-m1">
+                                <div class="card backing">
+                                    <div class="card-content">
                                         <div class="row">
-                                            <div class="comment-buttons center-align">
-                                                    <a href="{{ url_for('edit_comment', comment_id=comment._id) }}" class="btn-small orange darken-2 text-shadow">Edit</a>
-                                                    <a href="#delete-comment-modal{{ comment._id }}" class="modal-trigger btn-small red darken-2 text-shadow">Delete</a>
+                                            <div class="col s12 center-align comment">
+                                                {{ comment.comment }}
+                                            </div>
+                                            <div class="col s12 center-align comment">
+                                                <em>{{ comment.submitted_by }}</em>
+                                                <em>{{ comment.submission_date }}</em>
+                                            </div>
+                                            <!-- Comments buttons -->
+                                            <div class="row">
+                                                <div class="comment-buttons center-align">
+                                                        <a href="{{ url_for('edit_comment', comment_id=comment._id) }}" class="btn-small orange darken-2 text-shadow">Edit</a>
+                                                        <a href="#delete-comment-modal{{ comment._id }}" class="modal-trigger btn-small red darken-2 text-shadow">Delete</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!---- Confirm comment deletion modal ---->
-                    <div id="delete-comment-modal{{ comment._id }}" class="modal">
-                        <div class="modal-content light-backing">
-                            <h4 class="text-shadow title border">Confirm Deletion</h4>
-                            <p>Are you sure that you want to delete this comment?</p>
+                        
+                        <!-- Confirm comment deletion modal -->
+                        <div id="delete-comment-modal{{ comment._id }}" class="modal">
+                            <div class="modal-content light-backing">
+                                <h4 class="text-shadow title border">Confirm Deletion</h4>
+                                <p>Are you sure that you want to delete this comment?</p>
+                            </div>
+                            <div class="modal-footer light-backing">
+                                <a href="{{ url_for('delete_comment', comment_id=comment._id) }}"
+                                    class="modal-close btn-small green darken-2 text-shadow">Delete</a>
+                                <a href="{{ url_for('profile', username=session['user']) }}"
+                                    class="modal-close btn-small red darken-2 text-shadow">Cancel</a>
+                            </div>
                         </div>
-                        <div class="modal-footer light-backing">
-                            <a href="{{ url_for('delete_comment', comment_id=comment._id) }}"
-                                class="modal-close btn-small green darken-2 text-shadow">Delete</a>
-                            <a href="{{ url_for('profile', username=session['user']) }}"
-                                class="modal-close btn-small red darken-2 text-shadow">Cancel</a>
-                        </div>
-                    </div>
 
-                    {% endfor %}
-                    {% else %}
-                    <div class="row">
-                        <div class="col s12 m10 offset-m1">
-                            <span>You have not submitted any comments yet. Why not give a recipe a try and tell everyone what you think.</span>
+                        {% endfor %}
+                        {% else %}
+                        <!-- No comments to display -->
+                        <div class="row">
+                            <div class="col s12 m10 offset-m1">
+                                <span>You have not submitted any comments yet. Why not give a recipe a try and tell everyone what you think.</span>
+                            </div>
                         </div>
+                        
+                        {% endif %}
                     </div>
-                    
-                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
