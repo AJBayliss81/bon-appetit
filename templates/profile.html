@@ -24,7 +24,7 @@
                         <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
                     </div>
                     <!-- Profile buttons -->
-                    <div class="col s4 center-align" id="profile-buttons">
+                    <div class="col s4 center-alignprofile-buttons">
                         <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}"
                             class="btn-small green darken-2 text-shadow">View</a>
                         <a href="{{ url_for('manage_recipes', recipe_id=recipe._id) }}"
@@ -40,6 +40,7 @@
             </li>
 
             <!-- Confirm recipe deletion modal -->
+            <li>
             <div id="delete_modal{{ recipe._id }}" class="modal">
                 <div class="modal-content light-backing">
                     <h4 class="text-shadow title border">Confirm Deletion</h4>
@@ -52,6 +53,7 @@
                         class="modal-close btn-small red darken-2 text-shadow">Cancel</a>
                 </div>
             </div>
+            </li>
             {% endfor %}
         </ul>
     </div>
