@@ -2,7 +2,7 @@ import os
 import datetime
 from flask import (
     Flask, flash, render_template, jsonify,
-    redirect, request, session, url_for)
+    redirect, request, session, url_for, abort)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -28,6 +28,9 @@ def home():
 # Search functionality
 @app.route("/get_recipe/<recipe_id>")
 def get_recipe(recipe_id):
+    if not ObjectId.is_valid(recipe_id):
+        abort(404)
+
     recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)})
     comments = list(mongo.db.comments.find({"recipe_id": recipe_id}))
     return render_template("recipes.html", recipe=recipe, comments=comments)
