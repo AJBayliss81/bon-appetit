@@ -28,7 +28,7 @@ def home():
 # Search functionality
 @app.route("/get_recipe/<recipe_id>")
 def get_recipe(recipe_id):
-    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    recipe = mongo.db.recipes.find_one_or_404({"_id": ObjectId(recipe_id)})
     comments = list(mongo.db.comments.find({"recipe_id": recipe_id}))
     return render_template("recipes.html", recipe=recipe, comments=comments)
 
@@ -323,6 +323,19 @@ def edit_comment(comment_id):
     comment = mongo.db.comments.find_one({"_id": ObjectId(comment_id)})
     return render_template(
         "edit_comment.html", comment=comment, username=session["user"])
+
+
+# Custom Error Handling
+# 404 Error Page not found
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
+
+# 500 Error Server Error
+@app.errorhandler(500)
+def internal_server(error):
+    return render_template('500.html'), 500
 
 
 if __name__ == "__main__":
