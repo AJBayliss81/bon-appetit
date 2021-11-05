@@ -1,1 +1,17 @@
-404 Not Found
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="error-wrapper valign-wrapper">
+        <div class="row center-align">
+            <div class=" col s8 offset-s2 card-panel spacer backing border">
+                <h2>404</h2>
+                <div class="spacer">
+                    <p class="spacer error-text">Oh dear! We can't seem to find the page you were looking for.</p>
+                    <p class="spacer error-text">Please try using the navigation above to find what you were looking for, or you can return to the homepage here:</p>
+                    <a class="btn-small green darken-2 text-shadow" href="{{ url_for('home') }}">Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

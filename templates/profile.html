@@ -24,7 +24,7 @@
                         <strong>{{ recipe.dish_name.capitalize() }}</strong> : {{ recipe.submission_date }}
                     </div>
                     <!-- Profile buttons -->
-                    <div class="col s4 center-alignprofile-buttons">
+                    <div class="col s4 center-align profile-buttons">
                         <a href="{{ url_for('get_recipe', recipe_id=recipe._id) }}"
                             class="btn-small green darken-2 text-shadow">View</a>
                         <a href="{{ url_for('manage_recipes', recipe_id=recipe._id) }}"

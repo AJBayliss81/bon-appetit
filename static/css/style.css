@@ -103,6 +103,17 @@ textarea {
     position: relative;
 }
 
+/*-- Error page cards --*/
+
+.error-wrapper {
+    height: 65vh;
+}
+
+.error-text {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
 /*----- Landing page -----*/
 
 #welcome {
