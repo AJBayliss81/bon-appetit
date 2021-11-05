@@ -77,10 +77,10 @@ $("#methodToggle").click(function() {
 /*---- Dropdown mouseover/out ----*/
 
 $(".dropdown-content li a").mouseover(function() {
-    $(this).css("background-color", "#46494c");
+    $(this).css({"background-color": "#46494c", "color": "#c0b303"});
 });
 $(".dropdown-content li a").mouseout(function() {
-    $(this).css("background-color", "#4c5c68");
+    $(this).css({"background-color": "#4c5c68", "color": "#c5c3c6"});
 });
 
 

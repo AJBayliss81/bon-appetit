@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lato&display=swap');
 
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+  }
+   
+
 /*----- Text -----*/
+
 body {
     color: #c5c3c6;
     background: url(/static/images/kitchen.jpg) no-repeat;
@@ -41,6 +53,7 @@ text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.7)
 textarea {
     color: #c5c3c6;
 }
+
 /*----- Flash messages -----*/
 
 .flashes {
@@ -124,16 +137,36 @@ height: fit-content;
 }
 
 .welcome-card {
-top: 15vh;
+    top: 5vh;
 }
 
 /*----- Navbar -----*/
+
 nav {
     background-image: linear-gradient(to right, #4c5c68 , #46494c);
     border-bottom: 3px solid #1985a1;
 }
 .brand-logo {
     margin-left: 10px;
+}
+
+a:hover {
+    color: #c0b303;
+}
+
+/*-- Footer --*/
+
+footer {
+    background-image: linear-gradient(to right, #4c5c68 , #46494c);
+    border-top: 3px solid #1985a1;
+}
+
+.footer-copyright {
+    margin: 2vh 0;
+}
+
+.footer-link {
+    color: #c5c3c6;
 }
 
 /*----- Recipe list -----*/

@@ -80,11 +80,24 @@
         {% endif %}
     {% endwith %}
 
+    <!-- Main content -->
+
 	<main class="container">
 		{% block content %}
 	
 		{% endblock %}
 	</main>
+
+    <!-- Footer -->
+
+    <footer>
+        <div class="footer-copyright">
+          <div class="container text-shadow">
+          © 2021 Copyright AJB Design
+          <a class="right footer-link" href="https://github.com/AJBayliss81">Check out other projects</a>
+          </div>
+        </div>
+    </footer>
 
     <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
