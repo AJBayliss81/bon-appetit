@@ -72,13 +72,19 @@ User goals are:
   
 Being a user that is interested in sharing recipes within a community:  
   
-1. To be able to share recipes with other users quickly and easily.
-2. To be able to edit and delete recipes whenever necessary.
-3. To be able to add comments to recipes that I like to create a welcoming community experience.
-4. To be able to edit and delete comments whenever necessary.
-5. To be able to quickly see all the recipes and comments I have shared.
-6. To have an intuitive site that is easy to follow.  
-7. To have a site that is responsive and good to look at while using it.
+1. To be able to share recipes with other users quickly and easily. This process was achieved by having a simple form that users can fill out to store their recipes online. I elected to have the recipe categories limited to a drop down selection to limit the amount of potential categories within the database. !["Add recipe form"](static/images/add-recipe-form.png "Add recipe form")
+
+2. To be able to edit and delete recipes whenever necessary. I achieved this by containing all the submitted recipes on their own profile with buttons for CRUD functionality such editing and deleting. I also elected to have a confirmation modal for deletions to minimise the chances of accidental deletions. !["Edit recipe example"](static/images/edit-recipe-example.png "Edit recipe example") !["Delete confirmation example"](static/images/delete-recipeconfirmation.png "Delete confirmation example")
+
+3. To be able to add comments to recipes that I like to create a welcoming community experience. When viewing recipes I wanted users to have the ability to comment on the recipes to share their experience of what they liked about the recipe, and to post their suggestions for how to improve or alter the recipes. To do this I added an add comment form to the individual recipe page. !["Add comment example"](static/images/add-comment.png "Add comment example")
+
+4. To be able to edit and delete comments whenever necessary. This again was achieved through the profile page where all of the users comments are presented with CRUD buttons to edit and delete their own comments. The edit button will take users to a form where their comment can be edited, I elected to utilise a modal to confirm deletion of the comment to minimise erroneously deleting comments. !["Edit comments example"](static/images/edit-comments.png "Edit comments example") !["Edit comments form"](static/images/edit-comment-form.png "Edit comments form") !["Delete comment confirmation"](static/images/delete-comment-confirmation.png "Delete comment confirmation")
+
+5. To be able to quickly see all the recipes and comments I have shared. As stated above, I chose to display all of this information within the individual users profile. This allowed them to keep track of all of their contributions in one place, and to edit or delete them whenever required without having to scour the individual recipes. !["Profile display example"](static/images/profile-display.png "Profile display example")
+
+6. To have an intuitive site that is easy to follow. This was achieved by having a typical site navigation using a navbar located at the top of the screen. I tried to keep the nav menu and buttons self explanatory, to limit any potential confusion. !["Nav menu example"](static/images/nav-example.png "Nav menu example") 
+
+7. To have a site that is responsive and good to look at while using it. To achieve a responsive website I chose to use the MaterializeCSS framework to get out of the box responsiveness using their responsive classes. This allowed me to give users a similar experience whatever their chosen device. The colours chosen for the website were chosen to reflect those of kitchen utensils and appliances. !["Mobile responsive example"](static/images/mobile-design.png "Mobile responsive example") 
   
 ### Design Choices  
   
@@ -240,7 +246,9 @@ Upon completion of the project the code was checked using the following resource
 
   
 ### Bugs Discovered  
-- The bugs that were discovered through development have been fixed, so presently there are no known bugs in the deployed version.  
+- A bug was found with the 404 and 500 error handling whereby all errors would return as 404 errors. This was fixed to return the correct template for each situation.
+- Fixed bugs where incorrect recipes were returned.
+- There are no further known bugs at present.  
   
 ## Deployment  
   
