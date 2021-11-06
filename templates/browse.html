@@ -19,8 +19,8 @@
                         <!-- Hidden form to search for cuisines in DB -->
                         <form action="{{ url_for('cuisine_recipes') }}" method="POST" class="col s12">
                             <div class="hidden">
-                                <input type="text" name="browse" id="browse" value="{{ cuisine.cuisine }}">
-                                <label for="browse"></label>
+                                <input type="text" name="browse" id="browse-{{ cuisine.cuisine }}" value="{{ cuisine.cuisine }}">
+                                <label for="browse-{{ cuisine.cuisine }}"></label>
                             </div>
                             <button type="submit" class="btn-small cuisine-image-btn orange darken-2 text-shadow">
                                 View
